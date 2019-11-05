@@ -1,0 +1,16 @@
+body {
+    background-color: #100e17;
+}
+
+main {
+    margin: 48px;
+}
+
+.create-task {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.task-inputs {
+    color: #fff;
+}
