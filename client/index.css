@@ -4,6 +4,7 @@ body {
 
 main {
   margin: 48px;
+  font-size: 18px;
 }
 
 .create-task, .task-inputs {
@@ -12,11 +13,11 @@ main {
   margin: 0 auto;
 }
 
-.create-task .btn-primary, .task-inputs .btn-primary {
+.create-task .btn-primary {
   background-color: #00AF9C;
   border-color: #00AF9C;
 }
-.create-task .btn-primary:hover, .task-inputs .btn-primary:hover {
+.create-task .btn-primary:hover {
   background-color: #009498;
   border-color: #009498;
 }
@@ -76,6 +77,29 @@ main {
 .checked {
   text-decoration: line-through;
   color: #6c757d;
+}
+
+@media (max-width: 767px) {
+  main {
+    font-size: 16px;
+  }
+
+  .create-task button, .create-task input, .filter-buttons button {
+    height: 34px;
+    font-size: 16px !important;
+    padding: 3px 6px !important;
+  }
+}
+@media (max-width: 575px) {
+  .create-task, .task-inputs {
+    width: 90%;
+  }
+
+  .filter-buttons .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

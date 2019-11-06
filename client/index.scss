@@ -1,3 +1,5 @@
+$font-size-lg: 18px;
+$font-size-sm: 16px;
 $primary-color: #100e17;
 $btn-primary: #00AF9C;
 $btn-primary-hover: #009498;
@@ -5,16 +7,24 @@ $secondary-color: #FAF7FF;
 $btn-secondary-hover: #3A3941;
 $btn-secondary-marked: #6c757d;
 
+@mixin btn-size($height, $font-size, $padding-vertical, $padding-horizontal) {
+  height: $height;
+  font-size: $font-size !important;
+  padding: $padding-vertical $padding-horizontal !important;
+}
+
 
 body {
   background-color: $primary-color;
+
 }
 
 main {
   margin: 48px;
+  font-size: $font-size-lg;
 }
 
-.create-task {
+.create-task, .task-inputs {
   width: 70%;
   max-width: 700px;
   margin: 0 auto;
@@ -63,7 +73,6 @@ main {
 }
 
 .task-inputs {
-  @extend .create-task;
   color: $secondary-color;
 }
 
@@ -97,4 +106,29 @@ main {
 .checked {
   text-decoration: line-through;
   color: $btn-secondary-marked;
+}
+
+
+@media (max-width: 767px) {
+  main {
+    font-size: $font-size-sm;
+  }
+
+  .create-task button, .create-task input, .filter-buttons button {
+    @include btn-size(34px, $font-size-sm, 3px, 6px);
+  }
+}
+
+@media (max-width: 575px) {
+  .create-task, .task-inputs {
+    width: 90%;
+  }
+
+  .filter-buttons {
+    .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
 }
