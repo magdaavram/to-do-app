@@ -27,21 +27,24 @@ main {
 }
 
 .filter-buttons button {
-    border-color: #FAF7FF;
-    color: #FAF7FF;
     margin-left: 4px;
 }
 
-.filter-buttons button:hover {
+.filter-buttons .btn-outline-secondary {
+    border-color: #FAF7FF;
+    color: #FAF7FF;
+}
+
+.filter-buttons .btn-outline-secondary:hover {
     background-color: #3A3941;
     border-color: #3A3941;
 }
 
-.filter-buttons button:disabled {
+.filter-buttons .btn-outline-secondary:disabled {
     border-color: #6c757d;
 }
 
-.filter-buttons button:disabled:hover {
+.filter-buttons .btn-outline-secondary:disabled:hover {
     background-color: transparent;
 }
 
@@ -88,3 +91,5 @@ main {
     font-size: 10px;
     padding: .2rem .45rem;
 }
+
+
