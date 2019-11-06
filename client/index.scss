@@ -1,5 +1,13 @@
+$primary-color: #100e17;
+$btn-primary: #00AF9C;
+$btn-primary-hover: #009498;
+$secondary-color: #FAF7FF;
+$btn-secondary-hover: #3A3941;
+$btn-secondary-marked: #6c757d;
+
+
 body {
-  background-color: #100e17;
+  background-color: $primary-color;
 }
 
 main {
@@ -13,13 +21,13 @@ main {
 }
 
 .create-task .btn-primary {
-  background-color: #00AF9C;
-  border-color: #00AF9C;
+  background-color: $btn-primary;
+  border-color: $btn-primary;
 }
 
 .create-task .btn-primary:hover {
-  background-color: #009498;
-  border-color: #009498;
+  background-color: $btn-primary-hover;
+  border-color: $btn-primary-hover;
 }
 
 .filter-buttons {
@@ -31,17 +39,17 @@ main {
 }
 
 .filter-buttons .btn-outline-secondary {
-  border-color: #FAF7FF;
-  color: #FAF7FF;
+  border-color: $secondary-color;
+  color: $secondary-color;
 }
 
 .filter-buttons .btn-outline-secondary:hover {
-  background-color: #3A3941;
-  border-color: #3A3941;
+  background-color: $btn-secondary-hover;
+  border-color: $btn-secondary-hover;
 }
 
 .filter-buttons .btn-outline-secondary:disabled {
-  border-color: #6c757d;
+  border-color: $btn-secondary-marked;
 }
 
 .filter-buttons .btn-outline-secondary:disabled:hover {
@@ -53,7 +61,7 @@ main {
 }
 
 .task-inputs {
-  color: #FAF7FF;
+  color: $secondary-color;
 }
 
 .task-group {
@@ -68,7 +76,7 @@ main {
 
 .checked {
   text-decoration: line-through;
-  color: #6c757d;
+  color: $btn-secondary-marked;
 }
 
 .task-group label {
@@ -79,13 +87,11 @@ main {
 }
 
 .task-group label:hover {
-  background-color: #3A3941;
+  background-color: $btn-secondary-hover;
 }
 
 .task-group button {
   height: 24px;
   font-size: 10px;
-  padding: 0.2rem 0.45rem;
+  padding: .2rem .45rem;
 }
-
-/*# sourceMappingURL=index.css.map */
