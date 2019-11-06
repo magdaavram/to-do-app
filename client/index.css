@@ -17,13 +17,9 @@ main {
   background-color: #00AF9C;
   border-color: #00AF9C;
 }
-.create-task .btn-primary:hover {
+.create-task .btn-primary:hover, .create-task .btn-primary:active:focus {
   background-color: #009498;
   border-color: #009498;
-}
-.create-task .btn-primary:active:focus {
-  border-color: #009498;
-  background-color: #009498;
 }
 
 .filter-buttons {

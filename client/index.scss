@@ -36,14 +36,9 @@ main {
     border-color: $btn-primary;
   }
 
-  .btn-primary:hover {
+  .btn-primary:hover, .btn-primary:active:focus {
     background-color: $btn-primary-hover;
     border-color: $btn-primary-hover;
-  }
-
-  .btn-primary:active:focus {
-    border-color: $btn-primary-hover;
-    background-color: $btn-primary-hover;
   }
 }
 
