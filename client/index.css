@@ -21,6 +21,10 @@ main {
   background-color: #009498;
   border-color: #009498;
 }
+.create-task .btn-primary:active:focus {
+  border-color: #009498;
+  background-color: #009498;
+}
 
 .filter-buttons {
   text-align: right;
@@ -32,7 +36,7 @@ main {
   border-color: #FAF7FF;
   color: #FAF7FF;
 }
-.filter-buttons .btn-outline-secondary:hover {
+.filter-buttons .btn-outline-secondary:hover, .filter-buttons .btn-outline-secondary:active:focus {
   background-color: #3A3941;
   border-color: #3A3941;
 }
