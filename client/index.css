@@ -12,12 +12,11 @@ main {
   margin: 0 auto;
 }
 
-.create-task .btn-primary {
+.create-task .btn-primary, .task-inputs .btn-primary {
   background-color: #00AF9C;
   border-color: #00AF9C;
 }
-
-.create-task .btn-primary:hover {
+.create-task .btn-primary:hover, .task-inputs .btn-primary:hover {
   background-color: #009498;
   border-color: #009498;
 }
@@ -25,25 +24,20 @@ main {
 .filter-buttons {
   text-align: right;
 }
-
 .filter-buttons button {
   margin-left: 4px;
 }
-
 .filter-buttons .btn-outline-secondary {
   border-color: #FAF7FF;
   color: #FAF7FF;
 }
-
 .filter-buttons .btn-outline-secondary:hover {
   background-color: #3A3941;
   border-color: #3A3941;
 }
-
 .filter-buttons .btn-outline-secondary:disabled {
   border-color: #6c757d;
 }
-
 .filter-buttons .btn-outline-secondary:disabled:hover {
   background-color: transparent;
 }
@@ -61,31 +55,27 @@ main {
   justify-content: space-between;
   margin-bottom: 8px;
 }
-
 .task-group input, .task-group label {
   cursor: pointer;
 }
-
-.checked {
-  text-decoration: line-through;
-  color: #6c757d;
-}
-
 .task-group label {
   flex: auto;
   margin-right: 8px;
   border-radius: 4px;
   padding: 0 4px;
 }
-
 .task-group label:hover {
   background-color: #3A3941;
 }
-
 .task-group button {
   height: 24px;
   font-size: 10px;
   padding: 0.2rem 0.45rem;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: #6c757d;
 }
 
 /*# sourceMappingURL=index.css.map */

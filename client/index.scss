@@ -14,46 +14,48 @@ main {
   margin: 48px;
 }
 
-.create-task, .task-inputs {
+.create-task {
   width: 70%;
   max-width: 700px;
   margin: 0 auto;
 }
 
-.create-task .btn-primary {
-  background-color: $btn-primary;
-  border-color: $btn-primary;
-}
+.create-task {
+  .btn-primary {
+    background-color: $btn-primary;
+    border-color: $btn-primary;
+  }
 
-.create-task .btn-primary:hover {
-  background-color: $btn-primary-hover;
-  border-color: $btn-primary-hover;
+  .btn-primary:hover {
+    background-color: $btn-primary-hover;
+    border-color: $btn-primary-hover;
+  }
 }
 
 .filter-buttons {
   text-align: right;
-}
 
-.filter-buttons button {
-  margin-left: 4px;
-}
+  button {
+    margin-left: 4px;
+  }
 
-.filter-buttons .btn-outline-secondary {
-  border-color: $secondary-color;
-  color: $secondary-color;
-}
+  .btn-outline-secondary {
+    border-color: $secondary-color;
+    color: $secondary-color;
+  }
 
-.filter-buttons .btn-outline-secondary:hover {
-  background-color: $btn-secondary-hover;
-  border-color: $btn-secondary-hover;
-}
+  .btn-outline-secondary:hover {
+    background-color: $btn-secondary-hover;
+    border-color: $btn-secondary-hover;
+  }
 
-.filter-buttons .btn-outline-secondary:disabled {
-  border-color: $btn-secondary-marked;
-}
+  .btn-outline-secondary:disabled {
+    border-color: $btn-secondary-marked;
+  }
 
-.filter-buttons .btn-outline-secondary:disabled:hover {
-  background-color: transparent;
+  .btn-outline-secondary:disabled:hover {
+    background-color: transparent;
+  }
 }
 
 .tasks-section {
@@ -61,6 +63,7 @@ main {
 }
 
 .task-inputs {
+  @extend .create-task;
   color: $secondary-color;
 }
 
@@ -68,30 +71,30 @@ main {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
-}
 
-.task-group input, .task-group label {
-  cursor: pointer;
+  input, label {
+    cursor: pointer;
+  }
+
+  label {
+    flex: auto;
+    margin-right: 8px;
+    border-radius: 4px;
+    padding: 0 4px;
+  }
+
+  label:hover {
+    background-color: $btn-secondary-hover;
+  }
+
+  button {
+    height: 24px;
+    font-size: 10px;
+    padding: .2rem .45rem;
+  }
 }
 
 .checked {
   text-decoration: line-through;
   color: $btn-secondary-marked;
-}
-
-.task-group label {
-  flex: auto;
-  margin-right: 8px;
-  border-radius: 4px;
-  padding: 0 4px;
-}
-
-.task-group label:hover {
-  background-color: $btn-secondary-hover;
-}
-
-.task-group button {
-  height: 24px;
-  font-size: 10px;
-  padding: .2rem .45rem;
 }
