@@ -4,79 +4,144 @@
     <meta charset="UTF-8">
     <title>Create your TO DO list</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link crossorigin="anonymous"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          rel="stylesheet">
+    <script crossorigin="anonymous"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous">
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script crossorigin="anonymous"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous">
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script crossorigin="anonymous"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous">
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
     </script>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <main class="container-fluid">
-        <form class="create-task">
-            <div class="input-group mb-3 input-group-lg">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Task name</span>
-                </div>
+<main class="container-fluid">
+    <form class="create-task">
+        <div class="input-group mb-3">
+            <input class="form-control" placeholder="Insert task name" type="text">
 
-                <input type="text" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    Create task
+                </button>
+            </div>
+        </div>
 
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Create</button>
-                </div>
+        <div class="filter-buttons">
+            <button class="btn btn-outline-secondary" disabled type="button">Show all</button>
+            <button class="btn btn-outline-secondary" type="button">Show undone</button>
+        </div>
+    </form>
+
+    <section class="row tasks-section">
+        <form class="task-inputs">
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-1" type="checkbox">
+
+                <label class="custom-control-label" for="task-1">
+                    Get things done
+                </label>
+
+                <button attr-btn="task-1" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-2" type="checkbox">
+
+                <label class="custom-control-label" for="task-2">
+                    Shopping list
+                </label>
+
+                <button attr-btn="task-2" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-3" type="checkbox">
+
+                <label class="custom-control-label" for="task-3">
+                    Go to the gym
+                </label>
+
+                <button attr-btn="task-3" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-4" type="checkbox">
+
+                <label class="custom-control-label" for="task-4">
+                    Buy holiday tickets
+                </label>
+
+                <button attr-btn="task-4" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-5" type="checkbox">
+
+                <label class="custom-control-label" for="task-5">
+                    Book holiday hotel
+                </label>
+
+                <button attr-btn="task-5" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-6" type="checkbox">
+
+                <label class="custom-control-label" for="task-6">
+                    Create weekly menu
+                </label>
+
+                <button attr-btn="task-6" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-7" type="checkbox">
+
+                <label class="custom-control-label" for="task-7">
+                    Read bookmarked articles from Chrome
+                </label>
+
+                <button attr-btn="task-7" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
+            </div>
+
+            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+                <input class="custom-control-input" id="task-8" type="checkbox">
+
+                <label class="custom-control-label" for="task-8">
+                    Empty your inbox
+                </label>
+
+                <button attr-btn="task-8" class="btn btn-danger btn-sm" type="button">
+                    X
+                </button>
             </div>
         </form>
-
-        <section class="row tasks-section">
-            <div class="col-md-6 col-lg-4">
-                <form class="task-inputs">
-                    <div class="col-auto my-1">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="task-1">
-                            <label class="custom-control-label" for="task-1">Task 1</label>
-                            <button class="btn btn-danger btn-sm" type="button" attr-btn="task-1">X</button>
-                        </div>
-                    </div>
-
-                    <div class="col-auto my-1">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="task-2">
-                            <label class="custom-control-label" for="task-2">Task 2</label>
-                            <button class="btn btn-danger btn-sm" type="button" attr-btn="task-2">X</button>
-                        </div>
-                    </div>
-
-                    <div class="col-auto my-1">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="task-3">
-                            <label class="custom-control-label" for="task-3">Task 3</label>
-                            <button class="btn btn-danger btn-sm" type="button" attr-btn="task-3">X</button>
-                        </div>
-                    </div>
-
-                    <div class="col-auto my-1">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="task-4">
-                            <label class="custom-control-label" for="task-4">Task 4</label>
-                            <button class="btn btn-danger btn-sm" type="button" attr-btn="task-4">X</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
+    </section>
+</main>
 </body>
 </html>

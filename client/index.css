@@ -8,7 +8,41 @@ main {
 
 .create-task {
     width: 70%;
+    max-width: 700px;
     margin: 0 auto;
+}
+
+.create-task .btn-primary {
+    background-color: #00AF9C;
+    border-color: #00AF9C;
+}
+
+.create-task .btn-primary:hover {
+    background-color: #009498;
+    border-color: #009498;
+}
+
+.filter-buttons {
+    text-align: right;
+}
+
+.filter-buttons button {
+    border-color: #FAF7FF;
+    color: #FAF7FF;
+    margin-left: 4px;
+}
+
+.filter-buttons button:hover {
+    background-color: #3A3941;
+    border-color: #3A3941;
+}
+
+.filter-buttons button:disabled {
+    border-color: #6c757d;
+}
+
+.filter-buttons button:disabled:hover {
+    background-color: transparent;
 }
 
 .tasks-section {
@@ -17,5 +51,35 @@ main {
 }
 
 .task-inputs {
-    color: #fff;
+    width: 70%;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #FAF7FF;
+}
+
+.task-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.task-group input, .task-group label {
+    cursor: pointer;
+}
+
+.task-group label {
+    flex: auto;
+    margin-right: 8px;
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+.task-group label:hover {
+    background-color: #3A3941;
+}
+
+.task-group button {
+    height: 25px;
+    font-size: 10px;
+    padding: .2rem .45rem;
 }
