@@ -67,6 +67,11 @@ main {
     cursor: pointer;
 }
 
+.checked {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
 .task-group label {
     flex: auto;
     margin-right: 8px;
