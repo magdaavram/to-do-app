@@ -4,6 +4,7 @@
 
 ### Model
 * create (id, task, created_at, done)
+* edit
 * toggle done
 * get list of all
 * get list of undone

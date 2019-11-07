@@ -56,16 +56,22 @@ main {
   justify-content: space-between;
   margin-bottom: 8px;
 }
-.task-group input, .task-group label {
+.task-group input[type=checkbox], .task-group .task-text {
   cursor: pointer;
 }
-.task-group label {
+.task-group .task-text {
   flex: auto;
   margin-right: 8px;
   border-radius: 4px;
   padding: 0 4px;
 }
-.task-group label:hover {
+.task-group .task-text input {
+  height: 26px;
+  font-size: 18px;
+  color: #100e17;
+  padding-left: 8px;
+}
+.task-group .task-text:hover {
   background-color: #3A3941;
 }
 .task-group button {
@@ -79,6 +85,10 @@ main {
   color: #6c757d;
 }
 
+.no-display {
+  display: none;
+}
+
 @media (max-width: 767px) {
   main {
     font-size: 16px;
@@ -88,6 +98,11 @@ main {
     height: 34px;
     font-size: 16px !important;
     padding: 3px 6px !important;
+  }
+
+  .task-group .task-text input {
+    height: 24px;
+    font-size: 16px;
   }
 }
 @media (max-width: 575px) {

@@ -81,18 +81,25 @@ main {
   justify-content: space-between;
   margin-bottom: 8px;
 
-  input, label {
+  input[type="checkbox"], .task-text {
     cursor: pointer;
   }
 
-  label {
+  .task-text {
     flex: auto;
     margin-right: 8px;
     border-radius: 4px;
     padding: 0 4px;
+
+    input {
+      height: 26px;
+      font-size: $font-size-lg;
+      color: $primary-color;
+      padding-left: 8px;
+    }
   }
 
-  label:hover {
+  .task-text:hover {
     background-color: $btn-secondary-hover;
   }
 
@@ -108,6 +115,11 @@ main {
   color: $btn-secondary-marked;
 }
 
+.no-display {
+  display: none;
+}
+
+
 
 @media (max-width: 767px) {
   main {
@@ -116,6 +128,11 @@ main {
 
   .create-task button, .create-task input, .filter-buttons button {
     @include btn-size(34px, $font-size-sm, 3px, 6px);
+  }
+
+  .task-group .task-text input {
+    height: 24px;
+    font-size: $font-size-sm;
   }
 }
 
