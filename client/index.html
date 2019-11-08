@@ -48,7 +48,7 @@
     <section class="row tasks-section">
         <form class="task-inputs">
             <div class="custom-control custom-checkbox mr-sm-2 task-group">
-                <input class="custom-control-input" id="task-1" type="checkbox">
+                <input checked class="custom-control-input" id="task-1" type="checkbox">
 
                 <label class="custom-control-label task-container" for="task-1">
                     <div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="custom-control custom-checkbox mr-sm-2 task-group">
-                <input checked class="custom-control-input" id="task-2" type="checkbox">
+                <input class="custom-control-input" id="task-2" type="checkbox">
 
                 <label class="custom-control-label task-container" for="task-2">
                     <div>
@@ -221,5 +221,12 @@
 <button class="btn btn-danger delete-button" type="button">
     <i aria-hidden="true" class="fa fa-trash"></i>
 </button>
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    This is a random danger alert!
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 </body>
 </html>

@@ -108,6 +108,18 @@ main {
   font-size: 18px;
 }
 
+.alert-danger {
+  position: absolute;
+  width: 70%;
+  bottom: 70px;
+  left: 15%;
+  z-index: 1000;
+}
+
+.alert-danger button {
+  outline: none;
+}
+
 .checked {
   text-decoration: line-through;
   color: #6c757d;
@@ -138,8 +150,12 @@ main {
   }
 }
 @media (max-width: 575px) {
-  .create-task, .task-inputs {
+  .create-task, .task-inputs, .alert-danger {
     width: 90%;
+  }
+
+  .alert-danger {
+    left: 5%;
   }
 
   .filter-buttons button {
