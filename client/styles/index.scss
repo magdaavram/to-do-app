@@ -7,6 +7,7 @@ $btn-primary-hover: #009498;
 $secondary-color: #FAF7FF;
 $btn-secondary-hover: #3A3941;
 $btn-secondary-marked: #6c757d;
+$danger-color: #dc3545;
 
 @mixin btn-size($height, $font-size, $padding-vertical, $padding-horizontal) {
   height: $height;
@@ -17,12 +18,12 @@ $btn-secondary-marked: #6c757d;
 
 body {
   background-color: $primary-color;
-
 }
 
 main {
   margin: 48px;
   font-size: $font-size-lg;
+  position: relative;
 }
 
 .create-task, .task-inputs {
@@ -128,6 +129,19 @@ main {
   }
 }
 
+.delete-button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  bottom: 30px;
+  right: 48px;
+  border-radius: 50%;
+}
+
+.delete-button i {
+  font-size: $font-size-lg;
+}
+
 .checked {
   text-decoration: line-through;
   color: $btn-secondary-marked;
@@ -136,7 +150,6 @@ main {
 .no-display {
   display: none;
 }
-
 
 
 @media (max-width: 767px) {
@@ -164,7 +177,7 @@ main {
   }
 
   .filter-buttons {
-    .btn {
+    button {
       display: block;
       width: 100%;
       margin-bottom: 8px;

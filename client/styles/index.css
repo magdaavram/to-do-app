@@ -5,6 +5,7 @@ body {
 main {
   margin: 48px;
   font-size: 18px;
+  position: relative;
 }
 
 .create-task, .task-inputs {
@@ -94,6 +95,19 @@ main {
   padding: 0.2rem 0.45rem;
 }
 
+.delete-button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  bottom: 30px;
+  right: 48px;
+  border-radius: 50%;
+}
+
+.delete-button i {
+  font-size: 18px;
+}
+
 .checked {
   text-decoration: line-through;
   color: #6c757d;
@@ -128,7 +142,7 @@ main {
     width: 90%;
   }
 
-  .filter-buttons .btn {
+  .filter-buttons button {
     display: block;
     width: 100%;
     margin-bottom: 8px;
