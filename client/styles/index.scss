@@ -26,7 +26,7 @@ main {
   position: relative;
 }
 
-.create-task, .task-inputs {
+.create-task, .task-inputs, .alert-danger {
   width: 70%;
   max-width: 700px;
   margin: 0 auto;
@@ -136,22 +136,23 @@ main {
   bottom: 30px;
   right: 48px;
   border-radius: 50%;
+
+  .delete-button i {
+    font-size: $font-size-lg;
+  }
 }
 
-.delete-button i {
-  font-size: $font-size-lg;
-}
-
-.alert-danger {
+.alert-container {
   position: absolute;
-  width: 70%;
-  bottom: 70px;
-  left: 15%;
+  width: 100%;
+  height: 50px;
+  left: 0;
+  bottom: 100px;
   z-index: 1000;
-}
 
-.alert-danger button {
-  outline: none;
+  .alert-danger button {
+    outline: none;
+  }
 }
 
 .checked {
@@ -188,15 +189,15 @@ main {
     width: 90%;
   }
 
-  .alert-danger {
-    left: 5%;
-  }
-
   .filter-buttons {
     button {
       display: block;
       width: 100%;
       margin-bottom: 8px;
     }
+  }
+
+  .delete-button {
+    right: calc(50% - 25px);
   }
 }
