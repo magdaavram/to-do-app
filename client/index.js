@@ -24,14 +24,14 @@ function getTask(taskInputId) {
 }
 
 function createTask(taskName, taskId, date) {
-    $(`<div class="custom-control custom-checkbox mr-sm-2 task-group">
+    $(`<div class="custom-control custom-checkbox mr-sm-2 task-group d-flex justify-content-between">
 <input class="custom-control-input" id="task-${taskId}" type="checkbox">
 <label class="custom-control-label task-container" for="task-${taskId}">
-<div>
+<div class="d-flex align-items-center">
 <span>${taskName}</span>
-<span class="date-created">(${date})</span>
+<span class="date-created text-center">(${date})</span>
 </div>
-<input class="form-control no-display" name="task-${taskId}" type="text"></label>
+<input class="form-control d-none" name="task-${taskId}" type="text"></label>
 <button attr-btn="task-${taskId}" class="btn btn-danger btn-sm" type="button">X</button>
 </div>`)
         .appendTo(".task-inputs");

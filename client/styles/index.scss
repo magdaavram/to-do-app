@@ -23,7 +23,6 @@ body {
 main {
   margin: 48px;
   font-size: $font-size-lg;
-  position: relative;
 }
 
 .create-task, .task-inputs, .alert-danger {
@@ -45,8 +44,6 @@ main {
 }
 
 .filter-buttons {
-  text-align: right;
-
   button {
     margin-left: 4px;
   }
@@ -79,8 +76,6 @@ main {
 }
 
 .task-group {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 8px;
 
   input[type="checkbox"], .task-container {
@@ -93,15 +88,8 @@ main {
     border-radius: 4px;
     padding: 0 4px;
 
-
-    div {
-      display: flex;
-      align-items: center;
-    }
-
     .date-created {
       min-width: 90px;
-      text-align: center;
       margin-left: 8px;
       padding: 2px 4px;
       border-radius: 8px;
@@ -130,12 +118,10 @@ main {
 }
 
 .delete-button {
-  position: absolute;
   width: 50px;
   height: 50px;
   bottom: 30px;
   right: 48px;
-  border-radius: 50%;
 
   .delete-button i {
     font-size: $font-size-lg;
@@ -143,7 +129,6 @@ main {
 }
 
 .alert-container {
-  position: absolute;
   width: 100%;
   height: 50px;
   left: 0;
@@ -158,10 +143,6 @@ main {
 .checked {
   text-decoration: line-through;
   color: $btn-secondary-marked;
-}
-
-.no-display {
-  display: none;
 }
 
 

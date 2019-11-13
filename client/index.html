@@ -29,7 +29,7 @@
 </head>
 
 <body>
-<main class="container-fluid">
+<main class="container-fluid position-relative">
     <form class="create-task">
         <div class="input-group mb-3">
             <input class="form-control create-input" placeholder="Insert task name" type="text" autofocus>
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div class="filter-buttons">
+        <div class="filter-buttons text-right">
             <button class="btn btn-outline-secondary" disabled type="button">Show all</button>
             <button class="btn btn-outline-secondary" type="button">Show undone</button>
         </div>
@@ -49,20 +49,20 @@
 
     <section class="row tasks-section">
         <form class="task-inputs">
-            <div class="custom-control custom-checkbox mr-sm-2 task-group">
+            <div class="custom-control custom-checkbox mr-sm-2 task-group d-flex justify-content-between">
                 <input checked class="custom-control-input" id="task-1" type="checkbox">
 
                 <label class="custom-control-label task-container" for="task-1">
-                    <div>
+                    <div class="d-flex align-items-center">
                         <span class="checked">
                             Get things done
                         </span>
-                        <span class="date-created">
+                        <span class="date-created text-center">
                             (18/05, 10:21)
                         </span>
                     </div>
 
-                    <input class="form-control no-display" name="task-1" type="text">
+                    <input class="form-control d-none" name="task-1" type="text">
                 </label>
 
                 <button attr-btn="task-1" class="btn btn-danger btn-sm" type="button">
@@ -73,11 +73,11 @@
     </section>
 </main>
 
-<button class="btn btn-danger delete-button" type="button">
+<button class="btn btn-danger delete-button position-absolute rounded-circle" type="button">
     <i aria-hidden="true" class="fa fa-trash"></i>
 </button>
 
-<div class="alert-container">
+<div class="alert-container position-absolute">
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         This is a random danger alert!
         <button aria-label="Close" class="close" data-dismiss="alert" type="button">
