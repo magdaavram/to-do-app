@@ -2,7 +2,7 @@ let newTask;
 
 $(".create-button").click(() => {
     newTask = getTask(".create-input");
-    createTask(newTask, 3, "12/11, 10:33");
+    createTask(newTask, 5, "12/11, 10:33");
 });
 
 

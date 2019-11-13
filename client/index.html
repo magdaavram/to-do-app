@@ -23,6 +23,8 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+
 
     <link href="styles/index.css" rel="stylesheet" type="text/css">
     <link href="media/favicon.png" rel="icon" type="image/png">
@@ -69,6 +71,25 @@
                     X
                 </button>
             </div>
+
+            <div id="task-template" class="d-none">
+                <div class="custom-control custom-checkbox mr-sm-2 task-group d-flex justify-content-between">
+                    <input class="custom-control-input" id="task-{{taskId}}" type="checkbox">
+
+                    <label class="custom-control-label task-container" for="task-{{taskId}}">
+                        <div class="d-flex align-items-center">
+                            <span>{{task}}</span>
+                            <span class="date-created text-center">{{date}}</span>
+                        </div>
+
+                        <input class="form-control d-none" name="task-{{taskId}}" type="text">
+                    </label>
+
+                    <button attr-btn="task-{{taskId}}" class="btn btn-danger btn-sm" type="button">
+                        X
+                    </button>
+                </div>
+            </div>
         </form>
     </section>
 </main>
@@ -87,5 +108,17 @@
 </div>
 
 <script src="index.js"></script>
+
+<script type="text/javascript">
+    const task = {
+            taskId: 3,
+            task: "get things done",
+            date: "(11/12, 10:31)"
+        };
+
+    const template = $("#task-template").html();
+    const output = Mustache.render(template, task);
+    $(".task-inputs").append(output);
+</script>
 </body>
 </html>
