@@ -1,3 +1,5 @@
+"use strict";
+
 let newTask;
 
 $(".create-button").click(() => {
