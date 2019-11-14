@@ -1,0 +1,25 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "* create (id, task, created_at, done)\r * edit\r * toggle done\r * get list of all\r * get list of undone\r * delete task\r * delete all tasks",
+  "main": "index.js",
+  "dependencies": {
+    "node-module": "^2.0.0",
+    "sass": "^1.23.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magdaavram/to-do-app.git"
+  },
+  "keywords": [],
+  "author": "Magda Avram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magdaavram/to-do-app/issues"
+  },
+  "homepage": "https://github.com/magdaavram/to-do-app#readme"
+}
