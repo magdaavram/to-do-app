@@ -41,3 +41,5 @@ function injectTasks(tasks) {
 }
 
 injectTasks(tasks);
+
+// export {tasks};

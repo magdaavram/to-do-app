@@ -1,5 +1,8 @@
 "use strict";
 
+// import {tasks} from "./inject-task";
+// console.log(tasks[1]);
+
 let newTask;
 
 $(".create-button").click(() => {
