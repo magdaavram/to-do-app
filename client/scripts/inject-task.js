@@ -19,19 +19,7 @@ const tasks = [
 ];
 
 function injectTasks(tasks) {
-    const taskTemplate = "<div class=\"custom-control custom-checkbox mr-sm-2 task-group d-flex justify-content-between\">"
-        + "<input class=\"custom-control-input\" id=\"task-{{taskId}}\" type=\"checkbox\">"
-        + "<label class=\"custom-control-label task-container\" for=\"task-{{taskId}}\">"
-        + "<div class=\"d-flex align-items-center\">"
-        + "<span>{{task}}</span>"
-        + "<span class=\"date-created text-center\">({{date}})</span>"
-        + "</div>"
-        + "<input class=\"form-control d-none\" name=\"task-{{taskId}}\" type=\"text\">"
-        + "</label>"
-        + "<button attr-btn=\"task-{{taskId}}\" class=\"btn btn-danger btn-sm\" type=\"button\">"
-        + "X"
-        + "</button>"
-        + "</div>";
+    const taskTemplate = $("#task-template").html();
 
     $.each(tasks, (index, task) => {
         const output = Mustache.render(taskTemplate, task);
