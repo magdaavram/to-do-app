@@ -1,6 +1,6 @@
 "use strict";
 
-const tasks = [
+export const tasks = [
     {
         taskId: 3,
         task: "get things done",
@@ -18,7 +18,7 @@ const tasks = [
     }
 ];
 
-function injectTasks(tasks) {
+export function injectTasks(tasks) {
     const taskTemplate = $("#task-template").html();
 
     $.each(tasks, (index, task) => {
@@ -28,6 +28,6 @@ function injectTasks(tasks) {
     });
 }
 
-injectTasks(tasks);
+// injectTasks(tasks);
 
 // export {tasks};

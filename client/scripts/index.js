@@ -1,10 +1,12 @@
 "use strict";
 
-// import {tasks} from "./inject-task";
-// console.log(tasks[1]);
-
+// import lodash from 'lodash';
+import {hello} from './hello';
+// import * as t from './inject-task';
+// console.log(t.injectTasks(t.tasks));
+// t.injectTasks(t.tasks);
 let newTask;
-
+// console.log(lodash.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor));
 $(".create-button").click(() => {
     const date = getDate();
 
