@@ -37,9 +37,10 @@ main {
     border-color: $btn-primary;
   }
 
-  .btn-primary:hover, .btn-primary:active:focus {
+  .btn-primary:hover, .input-group-append .btn-primary:active:focus, .btn-primary:focus {
     background-color: $btn-primary-hover;
     border-color: $btn-primary-hover;
+    box-shadow: none;
   }
 }
 
