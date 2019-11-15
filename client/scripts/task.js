@@ -5,5 +5,6 @@ export class Task {
         this.taskId = id;
         this.task = task;
         this.date = date;
+        this.done = false;
     }
 }
