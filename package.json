@@ -4,11 +4,13 @@
   "description": "* create (id, task, created_at, done)\r * edit\r * toggle done\r * get list of all\r * get list of undone\r * delete task\r * delete all tasks",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.17.15",
     "node-module": "^2.0.0",
     "sass": "^1.23.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

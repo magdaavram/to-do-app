@@ -1,26 +1,42 @@
-"use strict";
+'use strict';
 
-// import lodash from 'lodash';
-import {hello} from './hello';
-// import * as t from './inject-task';
-// console.log(t.injectTasks(t.tasks));
-// t.injectTasks(t.tasks);
+import {injectTasks} from './inject-task';
+
+const tasks = [
+    {
+        taskId: 3,
+        task: 'finish UI development',
+        date: '11/12, 10:31'
+    },
+    {
+        taskId: 4,
+        task: 'shopping list',
+        date: '11/12, 11:21'
+    },
+    {
+        taskId: 5,
+        task: 'holiday airplane tickets',
+        date: '11/12, 16:13'
+    }
+];
+injectTasks(tasks);
+
 let newTask;
-// console.log(lodash.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor));
-$(".create-button").click(() => {
+
+$('.create-button').click(() => {
     const date = getDate();
 
-    newTask = getTask(".create-input");
+    newTask = getTask('.create-input');
     console.log(newTask, date);
 });
 
 
-$(".create-input").keydown((ev) => {
-    if (ev.key === "Enter") {
+$('.create-input').keydown((ev) => {
+    if (ev.key === 'Enter') {
         const date = getDate();
 
         ev.preventDefault();
-        newTask = getTask(".create-input");
+        newTask = getTask('.create-input');
         console.log(newTask, date);
     }
 });
@@ -29,7 +45,7 @@ $(".create-input").keydown((ev) => {
 function getTask(taskInputId) {
     const taskInput = $(taskInputId);
     const newTask = taskInput.val();
-    taskInput.val("");
+    taskInput.val('');
 
     return newTask;
 }
