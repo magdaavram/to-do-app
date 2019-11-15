@@ -1,6 +1,7 @@
 'use strict';
 
-import {injectTasks} from './inject-task';
+import { injectTasks } from './inject-task';
+import { getTask, getDate } from './get-task-content';
 
 const tasks = [
     {
@@ -19,6 +20,7 @@ const tasks = [
         date: '11/12, 16:13'
     }
 ];
+
 injectTasks(tasks);
 
 let newTask;
@@ -40,22 +42,3 @@ $('.create-input').keydown((ev) => {
         console.log(newTask, date);
     }
 });
-
-
-function getTask(taskInputId) {
-    const taskInput = $(taskInputId);
-    const newTask = taskInput.val();
-    taskInput.val('');
-
-    return newTask;
-}
-
-function getDate() {
-    const currentDate = new Date();
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() + 1;
-    const hour = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-
-    return `${day}/${month}, ${hour}:${minutes}`;
-}
