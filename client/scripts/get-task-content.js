@@ -1,7 +1,9 @@
 'use strict';
 
-function getTask(taskInputId) {
-    const taskInput = $(taskInputId);
+import {Task} from './task';
+
+function getTask() {
+    const taskInput = $('.create-input');
     const newTask = taskInput.val();
     taskInput.val('');
 
@@ -18,4 +20,11 @@ function getDate() {
     return `${day}/${month}, ${hour}:${minutes}`;
 }
 
-export { getTask, getDate };
+function createTask() {
+    const date = getDate();
+    const task = getTask();
+
+    return new Task(3, task, date);
+}
+
+export {createTask};

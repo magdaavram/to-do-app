@@ -1,44 +1,23 @@
 'use strict';
 
-import { injectTasks } from './inject-task';
-import { getTask, getDate } from './get-task-content';
+import {injectTasks} from './inject-task';
+import {createTask} from './get-task-content';
 
-const tasks = [
-    {
-        taskId: 3,
-        task: 'finish UI development',
-        date: '11/12, 10:31'
-    },
-    {
-        taskId: 4,
-        task: 'shopping list',
-        date: '11/12, 11:21'
-    },
-    {
-        taskId: 5,
-        task: 'holiday airplane tickets',
-        date: '11/12, 16:13'
-    }
-];
-
-injectTasks(tasks);
-
-let newTask;
 
 $('.create-button').click(() => {
-    const date = getDate();
+    const tasks = [];
 
-    newTask = getTask('.create-input');
-    console.log(newTask, date);
+    tasks.push(createTask());
+    injectTasks(tasks);
 });
 
 
 $('.create-input').keydown((ev) => {
     if (ev.key === 'Enter') {
-        const date = getDate();
+        const tasks = [];
 
+        tasks.push(createTask());
+        injectTasks(tasks);
         ev.preventDefault();
-        newTask = getTask('.create-input');
-        console.log(newTask, date);
     }
 });
