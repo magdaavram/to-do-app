@@ -1,5 +1,7 @@
 'use strict';
 
+const Mustache = require('mustache');
+
 export function injectTasks(tasks) {
     const taskTemplate = $('#task-template').html();
 
@@ -9,3 +11,5 @@ export function injectTasks(tasks) {
         $('.task-inputs').append(output);
     });
 }
+// add renderTask method
+// views.js
