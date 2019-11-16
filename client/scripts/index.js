@@ -37,4 +37,5 @@ $('.task-container').click((ev) => {
 
     const id = $('input[type="checkbox"]').attr('id');
     const taskId = id.slice(id.indexOf('-') + 1);
+    console.log(taskId);
 });

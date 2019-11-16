@@ -12,6 +12,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
+    "start": "npx webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
