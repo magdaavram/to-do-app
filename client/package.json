@@ -4,6 +4,7 @@
   "description": "* create (id, task, created_at, done)\r * edit\r * toggle done\r * get list of all\r * get list of undone\r * delete task\r * delete all tasks",
   "main": "index.js",
   "dependencies": {
+    "mustache": "^3.1.0",
     "node-module": "^2.0.0",
     "sass": "^1.23.3"
   },
