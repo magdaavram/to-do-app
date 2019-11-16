@@ -3,12 +3,17 @@
 import {injectTasks} from './inject-task';
 import {createTask} from './get-task-content';
 
+const saveTaskAction = () => {
+    //createTask()
+    //injectTask()
+    //new Task with task val
+};
+
 
 $('.create-button').click(() => {
     const tasks = [];
-    const newTask = createTask();
 
-    tasks.push(newTask);
+    tasks.push(createTask());
     injectTasks(tasks);
 });
 
@@ -23,19 +28,11 @@ $('.create-input').keydown((ev) => {
     }
 });
 
-$('.task-container').click((ev) => {
-    const taskContainer = ev.target;
-    // const taskItem = taskContainer.children();
-    // const inputItem = $('input[type="checkbox"');
-    console.log(taskContainer);
 
-    // if (inputItem[0].checked) {
-    //     taskItem.addClass('checked');
-    // } else {
-    //     taskItem.removeClass('checked');
-    // }
+$('.task-inputs').on('click', 'input[type="checkbox"]', (ev) => {
+    const element = ev.target;
+    const id = parseInt($(element).attr('attr-id'));
 
-    const id = $('input[type="checkbox"]').attr('id');
-    const taskId = id.slice(id.indexOf('-') + 1);
-    console.log(taskId);
+    $(element).parent().find('.task').toggleClass('checked');
+    console.log(id);
 });
