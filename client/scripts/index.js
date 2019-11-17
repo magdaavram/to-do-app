@@ -35,12 +35,10 @@ $(document).ready(() => {
 
 
 const saveTaskAction = () => {
-    const tasks = [];
     const taskInput = $('.create-input');
     const task = taskInput.val();
     const newTask = new Task(3, task, '11/12, 10:30');
 
-    tasks.push(newTask);
     renderTask(newTask);
     taskInput.val('');
 };
