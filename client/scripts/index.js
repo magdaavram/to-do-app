@@ -1,6 +1,6 @@
 'use strict';
 
-import {injectTasks} from './inject-task';
+import {renderTask} from './view';
 import {Task} from './task';
 
 
@@ -32,6 +32,6 @@ const saveTaskAction = () => {
     const newTask = new Task(3, task, '11/12, 10:30');
 
     tasks.push(newTask);
-    injectTasks(tasks);
+    renderTask(newTask);
     taskInput.val('');
 };
