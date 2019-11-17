@@ -4,11 +4,18 @@
   "description": "* create (id, task, created_at, done)\r * edit\r * toggle done\r * get list of all\r * get list of undone\r * delete task\r * delete all tasks",
   "main": "index.js",
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
     "mustache": "^3.1.0",
-    "node-module": "^2.0.0",
-    "sass": "^1.23.3"
+    "popper.js": "^1.16.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "css-loader": "^3.2.0",
+    "node-sass": "^4.13.0",
+    "sass": "^1.23.6",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },

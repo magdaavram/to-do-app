@@ -1,5 +1,6 @@
 'use strict';
 
+const $ = require('jquery');
 const Mustache = require('mustache');
 
 const renderTask = (task) => {

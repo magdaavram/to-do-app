@@ -1,8 +1,14 @@
 'use strict';
 
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '../styles/index.scss';
+import 'bootstrap';
+
 import {renderTask} from './view';
 import {Task} from './task';
 
+const $ = require('jquery');
 
 $('.create-button').click(() => {
     saveTaskAction();
