@@ -10,24 +10,27 @@ import {Task} from './task';
 
 const $ = require('jquery');
 
-$('.create-button').click(() => {
-    saveTaskAction();
-});
-
-
-$('.create-input').keydown((ev) => {
-    if (ev.key === 'Enter') {
+$(document).ready(() => {
+    $('.create-button').click(() => {
         saveTaskAction();
-        ev.preventDefault();
-    }
-});
+    });
 
 
-$('.task-inputs').on('click', 'input[type="checkbox"]', (ev) => {
-    const element = ev.target;
-    const id = parseInt($(element).attr('attr-id'));
+    $('.create-input').keydown((ev) => {
+        if (ev.key === 'Enter') {
+            saveTaskAction();
+            ev.preventDefault();
+        }
+    });
 
-    $(element).parent().find('.task').toggleClass('checked');
+
+    $('.task-inputs').on('click', 'input[type="checkbox"]', (ev) => {
+        const element = ev.target;
+        const id = parseInt($(element).attr('attr-id'));
+
+        $(element).parent().find('.task').toggleClass('checked');
+    });
+
 });
 
 
