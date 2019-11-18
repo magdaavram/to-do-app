@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '../styles/index.scss';
 import 'bootstrap';
 
-import {renderTask} from './view';
+import {renderTask, showTaskEdit} from './view';
 import {Task} from './task';
 
 const $ = require('jquery');
@@ -48,17 +48,7 @@ $(document).ready(() => {
             $(checkboxInput).parent().find('.task').toggleClass('checked');
         })
         .on('click', '.edit-btn', ev => {
-            const editTaskButton = ev.target;
-            const mainContainer = $(editTaskButton).parent();
-            const editTaskInput = $(mainContainer).find('.edit-task');
-            const taskTextElem = $(mainContainer).find('.task');
-            const taskText = $(taskTextElem).text();
-            const taskDateElem = $(mainContainer).find('.date-created');
-            const taskId = parseInt($(editTaskInput).attr('attr-id'));
-
-            $(editTaskInput).removeClass('d-none').val(taskText).focus().select();
-            $(taskTextElem).addClass('d-none');
-            $(taskDateElem).addClass('d-none');
+            showTaskEdit(ev);
         })
         .on('keydown', '.edit-task', ev => {
             // TODO update task on data base
