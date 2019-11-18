@@ -18,19 +18,20 @@ $(window).on('load', () => {
 });
 
 $(document).ready(() => {
-    // TODO add events on form submit
+    // TODO add task on form submit
     // TODO add task on data base
-    $('.create-button').click(() => {
+
+    $('.create-button').on('click', () => {
         if (saveTaskAction() !== false) {
-            toggleDisableButtons(false, '.show-all', '.show-undone');
+            toggleDisableButtons(false, '.show-all', '.show-undone', '.delete-button');
         }
     });
 
 
-    $('.create-input').keydown(ev => {
+    $('.create-input').on('keydown', ev => {
         if (ev.key === 'Enter') {
             if (saveTaskAction() !== false) {
-                toggleDisableButtons(false, '.show-all', '.show-undone');
+                toggleDisableButtons(false, '.show-all', '.show-undone', '.delete-button');
             }
 
             ev.preventDefault();
@@ -70,12 +71,23 @@ $(document).ready(() => {
         toggleDisableButtons(true, '.show-undone');
         toggleDisableButtons(false, '.show-all');
     });
+
+    // console.log($('.delete-button'));
+
+    $('.delete-button').on('click', (ev) => {
+        // TODO delete list from data base
+        $('.task-inputs').children('.task-group').remove();
+        toggleDisableButtons(true, '.show-all', '.show-undone', '.delete-button');
+    });
 });
 
 
 const saveTaskAction = () => {
     const taskInput = $('.create-input');
     const task = taskInput.val();
+
+    // TODO post task in data base
+    // TODO get id and date from server
 
     if (task.trim()) {
         const newTask = new Task(3, task, '11/12, 10:30');
