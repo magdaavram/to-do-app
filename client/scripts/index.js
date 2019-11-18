@@ -16,7 +16,7 @@ $(document).ready(() => {
     });
 
 
-    $('.create-input').keydown((ev) => {
+    $('.create-input').keydown(ev => {
         if (ev.key === 'Enter') {
             saveTaskAction();
             ev.preventDefault();
@@ -24,13 +24,19 @@ $(document).ready(() => {
     });
 
 
-    $('.task-inputs').on('click', 'input[type="checkbox"]', (ev) => {
+    $('.task-inputs')
+        .on('click', 'input[type="checkbox"]', ev => {
         const element = ev.target;
-        const id = parseInt($(element).attr('attr-id'));
+        const taskId = parseInt($(element).attr('attr-id'));
 
         $(element).parent().find('.task').toggleClass('checked');
-    });
+        })
+        .on('click', 'button', ev => {
+            const element = ev.target;
+            const taskId = parseInt($(element).attr('attr-id'));
 
+            $(element).parent().remove();
+        });
 });
 
 
