@@ -44,7 +44,11 @@
                         <input class="form-control d-none" name="task-{{taskId}}" type="text">
                     </label>
 
-                    <button attr-id="{{taskId}}" class="btn btn-danger btn-sm" type="button">
+                    <button attr-id="{{taskId}}" class="btn btn-primary btn-sm edit-task" type="button">
+                        <i aria-hidden="true" class="fa fa-edit"></i>
+                    </button>
+
+                    <button attr-id="{{taskId}}" class="btn btn-danger btn-sm delete-task" type="button">
                         X
                     </button>
                 </div>
@@ -54,7 +58,7 @@
 </main>
 
 <button class="btn btn-danger delete-button position-absolute rounded-circle" type="button">
-    <i aria-hidden="true" class="fa fa-trash"></i>
+    <i aria-hidden="true" class="fa fa-trash-alt"></i>
 </button>
 
 <div class="alert-container position-absolute">

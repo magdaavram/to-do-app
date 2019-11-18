@@ -114,9 +114,14 @@ main {
   }
 
   button {
+    width: 24px;
     height: 24px;
     font-size: 10px;
     padding: .2rem .45rem;
+  }
+
+  .edit-task {
+    margin-right: 4px;
   }
 }
 

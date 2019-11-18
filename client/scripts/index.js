@@ -47,7 +47,7 @@ $(document).ready(() => {
 
             $(element).parent().find('.task').toggleClass('checked');
         })
-        .on('click', 'button', ev => {
+        .on('click', '.delete-task', ev => {
             // TODO delete on data base
             const element = ev.target;
             const taskId = parseInt($(element).attr('attr-id'));
