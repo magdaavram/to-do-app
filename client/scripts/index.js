@@ -11,22 +11,22 @@ import {Task} from './task';
 const $ = require('jquery');
 
 $(window).on('load', () => {
-    if (!$('.task-inputs').children('.task-group').length) {
-        toggleDisable(true,'.show-all', '.show-undone');
+    if ($('.task-inputs').children('.task-group').length) {
+        toggleDisableButtons(false, '.show-all', '.show-undone');
     }
 });
 
 $(document).ready(() => {
     $('.create-button').click(() => {
         saveTaskAction();
-        toggleDisable(false,'.show-all', '.show-undone');
+        toggleDisableButtons(false, '.show-all', '.show-undone');
     });
 
 
     $('.create-input').keydown(ev => {
         if (ev.key === 'Enter') {
             saveTaskAction();
-            toggleDisable(false,'.show-all', '.show-undone');
+            toggleDisableButtons(false, '.show-all', '.show-undone');
             ev.preventDefault();
         }
     });
@@ -46,27 +46,19 @@ $(document).ready(() => {
             $(element).parent().remove();
 
             if (!$('.task-inputs').children('.task-group').length) {
-                toggleDisable(true,'.show-all', '.show-undone');
+                toggleDisableButtons(true, '.show-all', '.show-undone');
             }
         });
 
 
     $('.show-all').on('click', ev => {
-        toggleDisable(true, '.show-all');
-        toggleDisable(false, '.show-undone');
+        toggleDisableButtons(true, '.show-all');
+        toggleDisableButtons(false, '.show-undone');
     });
 
     $('.show-undone').on('click', ev => {
-        toggleDisable(true,'.show-undone');
-        toggleDisable(false, '.show-all');
-    });
-
-
-    $('body').on('click', '.delete-button', ev => {
-        const element = ev.target;
-
-        console.log(element);
-        //disable buttons if no children
+        toggleDisableButtons(true, '.show-undone');
+        toggleDisableButtons(false, '.show-all');
     });
 });
 
@@ -80,7 +72,7 @@ const saveTaskAction = () => {
     taskInput.val('');
 };
 
-const toggleDisable = (state, ...args) => {
+const toggleDisableButtons = (state, ...args) => {
     for (let arg of args) {
         $(arg).attr('disabled', state);
     }
