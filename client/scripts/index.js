@@ -42,17 +42,31 @@ $(document).ready(() => {
     $('.task-inputs')
         .on('click', 'input[type="checkbox"]', ev => {
             // TODO toggle done on data base
-            const element = ev.target;
-            const taskId = parseInt($(element).attr('attr-id'));
+            const checkboxInput = ev.target;
+            const taskId = parseInt($(checkboxInput).attr('attr-id'));
 
-            $(element).parent().find('.task').toggleClass('checked');
+            $(checkboxInput).parent().find('.task').toggleClass('checked');
+        })
+        .on('click', '.edit-btn', ev => {
+            // TODO update task on data base
+            const editTaskButton = ev.target;
+            const mainContainer = $(editTaskButton).parent();
+            const editTaskInput = $(mainContainer).find('.edit-task');
+            const taskTextElem = $(mainContainer).find('.task');
+            const taskText = $(taskTextElem).text();
+            const taskDateElem = $(mainContainer).find('.date-created');
+            const taskId = parseInt($(editTaskInput).attr('attr-id'));
+
+            $(editTaskInput).removeClass('d-none').val(`${taskText}`).focus().select();
+            $(taskTextElem).addClass('d-none');
+            $(taskDateElem).addClass('d-none');
         })
         .on('click', '.delete-task', ev => {
             // TODO delete on data base
-            const element = ev.target;
-            const taskId = parseInt($(element).attr('attr-id'));
+            const deleteTaskButton = ev.target;
+            const taskId = parseInt($(deleteTaskButton).attr('attr-id'));
 
-            $(element).parent().remove();
+            $(deleteTaskButton).parent().remove();
 
             if (!$('.task-inputs').children('.task-group').length) {
                 toggleDisableButtons(true, '.show-all', '.show-undone');
@@ -72,7 +86,6 @@ $(document).ready(() => {
         toggleDisableButtons(false, '.show-all');
     });
 
-    // console.log($('.delete-button'));
 
     $('.delete-button').on('click', (ev) => {
         // TODO delete list from data base

@@ -120,8 +120,12 @@ main {
     padding: .2rem .45rem;
   }
 
-  .edit-task {
+  .edit-btn {
     margin-right: 4px;
+  }
+
+  .edit-btn > * {
+    pointer-events: none;
   }
 }
 
