@@ -18,15 +18,18 @@ $(window).on('load', () => {
 
 $(document).ready(() => {
     $('.create-button').click(() => {
-        saveTaskAction();
-        toggleDisableButtons(false, '.show-all', '.show-undone');
+        if (saveTaskAction()) {
+            toggleDisableButtons(false, '.show-all', '.show-undone');
+        }
     });
 
 
     $('.create-input').keydown(ev => {
         if (ev.key === 'Enter') {
-            saveTaskAction();
-            toggleDisableButtons(false, '.show-all', '.show-undone');
+            if (saveTaskAction()) {
+                toggleDisableButtons(false, '.show-all', '.show-undone');
+            }
+
             ev.preventDefault();
         }
     });
@@ -66,10 +69,15 @@ $(document).ready(() => {
 const saveTaskAction = () => {
     const taskInput = $('.create-input');
     const task = taskInput.val();
-    const newTask = new Task(3, task, '11/12, 10:30');
 
-    renderTask(newTask);
-    taskInput.val('');
+    if (task.trim()) {
+        const newTask = new Task(3, task, '11/12, 10:30');
+
+        renderTask(newTask);
+        taskInput.val('');
+    } else {
+        return false;
+    }
 };
 
 const toggleDisableButtons = (state, ...args) => {
