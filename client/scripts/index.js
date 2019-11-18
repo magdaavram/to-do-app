@@ -44,6 +44,10 @@ $(document).ready(() => {
             const taskId = parseInt($(element).attr('attr-id'));
 
             $(element).parent().remove();
+
+            if (!$('.task-inputs').children('.task-group').length) {
+                toggleDisable(true,'.show-all', '.show-undone');
+            }
         });
 
 
