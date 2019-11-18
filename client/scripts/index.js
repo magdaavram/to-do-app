@@ -10,6 +10,7 @@ import {Task} from './task';
 
 const $ = require('jquery');
 
+
 $(window).on('load', () => {
     if ($('.task-inputs').children('.task-group').length) {
         toggleDisableButtons(false, '.show-all', '.show-undone');
@@ -17,6 +18,8 @@ $(window).on('load', () => {
 });
 
 $(document).ready(() => {
+    // TODO add events on form submit
+    // TODO add task on data base
     $('.create-button').click(() => {
         if (saveTaskAction() !== false) {
             toggleDisableButtons(false, '.show-all', '.show-undone');
@@ -37,12 +40,14 @@ $(document).ready(() => {
 
     $('.task-inputs')
         .on('click', 'input[type="checkbox"]', ev => {
+            // TODO toggle done on data base
             const element = ev.target;
             const taskId = parseInt($(element).attr('attr-id'));
 
             $(element).parent().find('.task').toggleClass('checked');
         })
         .on('click', 'button', ev => {
+            // TODO delete on data base
             const element = ev.target;
             const taskId = parseInt($(element).attr('attr-id'));
 
@@ -55,11 +60,13 @@ $(document).ready(() => {
 
 
     $('.show-all').on('click', ev => {
+        // TODO get all from data base and render list
         toggleDisableButtons(true, '.show-all');
         toggleDisableButtons(false, '.show-undone');
     });
 
     $('.show-undone').on('click', ev => {
+        // TODO get undone from data base and render list
         toggleDisableButtons(true, '.show-undone');
         toggleDisableButtons(false, '.show-all');
     });
@@ -76,6 +83,7 @@ const saveTaskAction = () => {
         renderTask(newTask);
         taskInput.val('');
     } else {
+        // TODO display alert
         return false;
     }
 };
