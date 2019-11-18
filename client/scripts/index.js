@@ -10,15 +10,23 @@ import {Task} from './task';
 
 const $ = require('jquery');
 
+$(window).on('load', () => {
+    if (!$('.task-inputs').children('.task-group').length) {
+        toggleDisable(true,'.show-all', '.show-undone');
+    }
+});
+
 $(document).ready(() => {
     $('.create-button').click(() => {
         saveTaskAction();
+        toggleDisable(false,'.show-all', '.show-undone');
     });
 
 
     $('.create-input').keydown(ev => {
         if (ev.key === 'Enter') {
             saveTaskAction();
+            toggleDisable(false,'.show-all', '.show-undone');
             ev.preventDefault();
         }
     });
@@ -26,10 +34,10 @@ $(document).ready(() => {
 
     $('.task-inputs')
         .on('click', 'input[type="checkbox"]', ev => {
-        const element = ev.target;
-        const taskId = parseInt($(element).attr('attr-id'));
+            const element = ev.target;
+            const taskId = parseInt($(element).attr('attr-id'));
 
-        $(element).parent().find('.task').toggleClass('checked');
+            $(element).parent().find('.task').toggleClass('checked');
         })
         .on('click', 'button', ev => {
             const element = ev.target;
@@ -37,6 +45,25 @@ $(document).ready(() => {
 
             $(element).parent().remove();
         });
+
+
+    $('.show-all').on('click', ev => {
+        toggleDisable(true, '.show-all');
+        toggleDisable(false, '.show-undone');
+    });
+
+    $('.show-undone').on('click', ev => {
+        toggleDisable(true,'.show-undone');
+        toggleDisable(false, '.show-all');
+    });
+
+
+    $('body').on('click', '.delete-button', ev => {
+        const element = ev.target;
+
+        console.log(element);
+        //disable buttons if no children
+    });
 });
 
 
@@ -47,4 +74,10 @@ const saveTaskAction = () => {
 
     renderTask(newTask);
     taskInput.val('');
+};
+
+const toggleDisable = (state, ...args) => {
+    for (let arg of args) {
+        $(arg).attr('disabled', state);
+    }
 };
