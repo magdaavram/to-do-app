@@ -48,7 +48,6 @@ $(document).ready(() => {
             $(checkboxInput).parent().find('.task').toggleClass('checked');
         })
         .on('click', '.edit-btn', ev => {
-            // TODO update task on data base
             const editTaskButton = ev.target;
             const mainContainer = $(editTaskButton).parent();
             const editTaskInput = $(mainContainer).find('.edit-task');
@@ -57,9 +56,28 @@ $(document).ready(() => {
             const taskDateElem = $(mainContainer).find('.date-created');
             const taskId = parseInt($(editTaskInput).attr('attr-id'));
 
-            $(editTaskInput).removeClass('d-none').val(`${taskText}`).focus().select();
+            $(editTaskInput).removeClass('d-none').val(taskText).focus().select();
             $(taskTextElem).addClass('d-none');
             $(taskDateElem).addClass('d-none');
+        })
+        .on('keydown', '.edit-task', ev => {
+            // TODO update task on data base
+            // TODO get new date from server
+
+            const editTaskInput = ev.target;
+
+            if (ev.key === 'Enter') {
+                const taskText = $(editTaskInput).val();
+                const mainContainer = $(editTaskInput).parent();
+                const taskTextElem = $(mainContainer).find('.task');
+                const taskDateElem = $(mainContainer).find('.date-created');
+
+                $(taskTextElem).removeClass('d-none');
+                $(taskTextElem).text(taskText);
+                $(taskDateElem).removeClass('d-none');
+                $(editTaskInput).addClass('d-none');
+                ev.preventDefault();
+            }
         })
         .on('click', '.delete-task', ev => {
             // TODO delete on data base
