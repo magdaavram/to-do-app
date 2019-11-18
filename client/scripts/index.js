@@ -18,7 +18,7 @@ $(window).on('load', () => {
 
 $(document).ready(() => {
     $('.create-button').click(() => {
-        if (saveTaskAction()) {
+        if (saveTaskAction() !== false) {
             toggleDisableButtons(false, '.show-all', '.show-undone');
         }
     });
@@ -26,7 +26,7 @@ $(document).ready(() => {
 
     $('.create-input').keydown(ev => {
         if (ev.key === 'Enter') {
-            if (saveTaskAction()) {
+            if (saveTaskAction() !== false) {
                 toggleDisableButtons(false, '.show-all', '.show-undone');
             }
 
