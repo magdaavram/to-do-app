@@ -17,6 +17,7 @@ const deleteTask = actions.deleteTask;
 const showAll = actions.showAll;
 const showUndone = actions.showUndone;
 const deleteAll = actions.deleteAll;
+const hideAlert = actions.hideAlert;
 
 $(window).on('load', enableButtons);
 $(document).ready(() => {
@@ -29,4 +30,5 @@ $(document).ready(() => {
     $('.show-all').on('click', showAll);
     $('.show-undone').on('click', showUndone);
     $('.delete-button').on('click', deleteAll);
+    $('.close-alert').on('click', ev => hideAlert(ev));
 });

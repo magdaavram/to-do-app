@@ -150,6 +150,10 @@ main {
   .alert-danger button {
     outline: none;
   }
+
+  .alert-danger button > * {
+    pointer-events: none;
+  }
 }
 
 .checked {

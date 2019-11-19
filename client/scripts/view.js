@@ -28,27 +28,44 @@ const enableButtons = () => {
 };
 
 const saveTaskHandler = ev => {
-    if (saveTaskAction() !== false) {
-        disableButtons(false, '.show-all', '.show-undone', '.delete-button');
-    }
-
     ev.preventDefault();
+
+    try {
+        const newTask = saveTaskAction();
+        renderTask(newTask);
+    } catch (e) {
+       switch(e) {
+           case 'no-task':
+               setAlert('Please insert a valid task name.');
+               break;
+
+           case 'too-long':
+               setAlert('Please insert a less than 70 characters task.');
+               break;
+
+           default:
+               setAlert('Sorry! Some error occurred and the action could not be done.');
+               break;
+       }
+    }
 };
 
 const saveTaskAction = () => {
     const taskInput = $('.create-input');
-    const task = taskInput.val();
+    const task = taskInput.val().trim();
 
-    if (task.trim()) {
-        const newTask = new Task(3, task, '11/12, 10:30');
+    taskInput.val('');
 
-        renderTask(newTask);
-        taskInput.val('');
-    } else {
-        return false;
+    if (task === '') {
+        throw 'no-task';
+    } else if (task.length > 70) {
+        throw 'too-long';
     }
-};
 
+    disableButtons(false, '.show-all', '.show-undone', '.delete-button');
+
+    return new Task(Math.floor(Math.random() * 100), task, '11/12, 10:30');
+};
 
 const toggleCheckedTask = ev => {
     const checkboxInput = ev.target;
@@ -63,7 +80,6 @@ const showTaskEdit = ev => {
     const taskTextElem = $(mainContainer).find('.task');
     const taskText = $(taskTextElem).text();
     const taskDateElem = $(mainContainer).find('.date-created');
-    const taskId = parseInt($(editTaskInput).attr('attr-id'));
 
     $(editTaskInput).removeClass('d-none').val(taskText).focus().select();
     $(taskTextElem).addClass('d-none');
@@ -128,6 +144,18 @@ const disableButtons = (state, ...buttons) => {
     }
 };
 
+const setAlert = alert => {
+    $('.alert-container').removeClass('d-none');
+    $('.alert-content').show();
+    $('.alert-text').text(alert);
+};
+
+const hideAlert = ev => {
+    $('.' + $(ev.target).attr('data-hide')).hide();
+    $('.alert-container').addClass('d-none');
+};
+
+
 export {
     enableButtons,
     saveTaskHandler,
@@ -137,5 +165,6 @@ export {
     deleteTask,
     showAll,
     showUndone,
-    deleteAll
+    deleteAll,
+    hideAlert
 };
