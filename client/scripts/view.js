@@ -31,4 +31,30 @@ const showTaskEdit = ev => {
     $(taskDateElem).addClass('d-none');
 };
 
-export {renderTask, renderTasks, showTaskEdit}
+const editTask = ev => {
+    const editTaskInput = ev.target;
+    const mainContainer = $(editTaskInput).parent();
+    const initialTaskTextElem = $(mainContainer).find('.task');
+    const initialTaskDateElem = $(mainContainer).find('.date-created');
+    const toggleDisplayElements = [initialTaskTextElem, initialTaskDateElem, editTaskInput];
+
+    if (ev.key === 'Enter') {
+        const newTask = $(editTaskInput).val();
+
+        toggleClass('d-none', toggleDisplayElements);
+        $(initialTaskTextElem).text(newTask);
+        ev.preventDefault();
+    }
+
+    if (ev.key === 'Escape') {
+        toggleClass('d-none', toggleDisplayElements);
+    }
+};
+
+const toggleClass = (className, items) => {
+    for (let item of items) {
+        $(item).toggleClass(className);
+    }
+};
+
+export {renderTask, renderTasks, showTaskEdit, editTask}

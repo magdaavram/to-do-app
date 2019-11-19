@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '../styles/index.scss';
 import 'bootstrap';
 
-import {renderTask, showTaskEdit} from './view';
+import {renderTask, showTaskEdit, editTask} from './view';
 import {Task} from './task';
 
 const $ = require('jquery');
@@ -53,26 +53,7 @@ $(document).ready(() => {
         .on('keydown', '.edit-task', ev => {
             // TODO update task on data base
             // TODO get new date from server
-
-            const editTaskInput = ev.target;
-            const mainContainer = $(editTaskInput).parent();
-            const initialTaskTextElem = $(mainContainer).find('.task');
-            const initialTaskDateElem = $(mainContainer).find('.date-created');
-
-            if (ev.key === 'Enter') {
-                const newTask = $(editTaskInput).val();
-
-                $(initialTaskTextElem).removeClass('d-none').text(newTask);
-                $(initialTaskDateElem).removeClass('d-none');
-                $(editTaskInput).addClass('d-none');
-                ev.preventDefault();
-            }
-
-            if (ev.key === 'Escape') {
-                $(initialTaskTextElem).removeClass('d-none');
-                $(initialTaskDateElem).removeClass('d-none');
-                $(editTaskInput).addClass('d-none');
-            }
+            editTask(ev);
         })
         .on('click', '.delete-task', ev => {
             // TODO delete on data base
