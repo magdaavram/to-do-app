@@ -20,6 +20,21 @@ const renderTasks = tasks => {
     });
 };
 
+
+const enableButtons = () => {
+    if ($('.task-inputs').children('.task-group').length) {
+        disableButtons(false, '.show-all', '.show-undone', '.delete-button');
+    }
+};
+
+const saveTaskHandler = ev => {
+    if (saveTaskAction() !== false) {
+        disableButtons(false, '.show-all', '.show-undone', '.delete-button');
+    }
+
+    ev.preventDefault();
+};
+
 const saveTaskAction = () => {
     const taskInput = $('.create-input');
     const task = taskInput.val();
@@ -75,7 +90,7 @@ const editTask = ev => {
     }
 };
 
-const deleteTask = (ev) => {
+const deleteTask = ev => {
     const deleteTaskButton = ev.target;
 
     $(deleteTaskButton).parent().remove();
@@ -113,4 +128,14 @@ const disableButtons = (state, ...buttons) => {
     }
 };
 
-export {saveTaskAction, toggleCheckedTask, showTaskEdit, editTask, deleteTask, showAll, showUndone, deleteAll, disableButtons};
+export {
+    enableButtons,
+    saveTaskHandler,
+    toggleCheckedTask,
+    showTaskEdit,
+    editTask,
+    deleteTask,
+    showAll,
+    showUndone,
+    deleteAll
+};
