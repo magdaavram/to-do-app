@@ -1,7 +1,10 @@
 'use strict';
 
+import {Task} from "./task";
+
 const $ = require('jquery');
 const Mustache = require('mustache');
+
 
 const renderTask = task => {
     const taskTemplate = $('#task-template').html();
@@ -15,6 +18,27 @@ const renderTasks = tasks => {
     $.each(tasks, (index, task) => {
         $('.task-inputs').append(Mustache.render(taskTemplate, task));
     });
+};
+
+const saveTaskAction = () => {
+    const taskInput = $('.create-input');
+    const task = taskInput.val();
+
+    if (task.trim()) {
+        const newTask = new Task(3, task, '11/12, 10:30');
+
+        renderTask(newTask);
+        taskInput.val('');
+    } else {
+        return false;
+    }
+};
+
+
+const toggleCheckedTask = ev => {
+    const checkboxInput = ev.target;
+
+    $(checkboxInput).parent().find('.task').toggleClass('checked');
 };
 
 const showTaskEdit = ev => {
@@ -51,10 +75,42 @@ const editTask = ev => {
     }
 };
 
+const deleteTask = (ev) => {
+    const deleteTaskButton = ev.target;
+
+    $(deleteTaskButton).parent().remove();
+
+    if (!$('.task-inputs').children('.task-group').length) {
+        disableButtons(true, '.show-all', '.show-undone');
+    }
+};
+
+const showAll = () => {
+    disableButtons(true, '.show-all');
+    disableButtons(false, '.show-undone');
+};
+
+const showUndone = () => {
+    disableButtons(true, '.show-undone');
+    disableButtons(false, '.show-all');
+};
+
+const deleteAll = () => {
+    $('.task-inputs').children('.task-group').remove();
+    disableButtons(true, '.show-all', '.show-undone', '.delete-button');
+};
+
+
 const toggleClass = (className, items) => {
     for (let item of items) {
         $(item).toggleClass(className);
     }
 };
 
-export {renderTask, renderTasks, showTaskEdit, editTask}
+const disableButtons = (state, ...buttons) => {
+    for (let button of buttons) {
+        $(button).attr('disabled', state);
+    }
+};
+
+export {saveTaskAction, toggleCheckedTask, showTaskEdit, editTask, deleteTask, showAll, showUndone, deleteAll, disableButtons};

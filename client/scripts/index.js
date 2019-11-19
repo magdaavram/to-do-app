@@ -5,25 +5,31 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '../styles/index.scss';
 import 'bootstrap';
 
-import {renderTask, showTaskEdit, editTask} from './view';
-import {Task} from './task';
+import * as actions from './view';
 
 const $ = require('jquery');
+
+const disableButtons = actions.disableButtons;
+const saveTaskAction = actions.saveTaskAction;
+const toggleCheckedTask = actions.toggleCheckedTask;
+const showTaskEdit = actions.showTaskEdit;
+const editTask = actions.editTask;
+const deleteTask = actions.deleteTask;
+const showAll = actions.showAll;
+const showUndone = actions.showUndone;
+const deleteAll = actions.deleteAll;
 
 
 $(window).on('load', () => {
     if ($('.task-inputs').children('.task-group').length) {
-        toggleDisableButtons(false, '.show-all', '.show-undone');
+        disableButtons(false, '.show-all', '.show-undone', '.delete-button');
     }
 });
 
 $(document).ready(() => {
-    // TODO add task on form submit
-    // TODO add task on data base
-
     $('.create-button').on('click', () => {
         if (saveTaskAction() !== false) {
-            toggleDisableButtons(false, '.show-all', '.show-undone', '.delete-button');
+            disableButtons(false, '.show-all', '.show-undone', '.delete-button');
         }
     });
 
@@ -31,7 +37,7 @@ $(document).ready(() => {
     $('.create-input').on('keydown', ev => {
         if (ev.key === 'Enter') {
             if (saveTaskAction() !== false) {
-                toggleDisableButtons(false, '.show-all', '.show-undone', '.delete-button');
+                disableButtons(false, '.show-all', '.show-undone', '.delete-button');
             }
 
             ev.preventDefault();
@@ -41,74 +47,19 @@ $(document).ready(() => {
 
     $('.task-inputs')
         .on('click', 'input[type="checkbox"]', ev => {
-            // TODO toggle done on data base
-            const checkboxInput = ev.target;
-            const taskId = parseInt($(checkboxInput).attr('attr-id'));
-
-            $(checkboxInput).parent().find('.task').toggleClass('checked');
+            toggleCheckedTask(ev);
         })
         .on('click', '.edit-btn', ev => {
             showTaskEdit(ev);
         })
         .on('keydown', '.edit-task', ev => {
-            // TODO update task on data base
-            // TODO get new date from server
             editTask(ev);
         })
         .on('click', '.delete-task', ev => {
-            // TODO delete on data base
-            const deleteTaskButton = ev.target;
-            const taskId = parseInt($(deleteTaskButton).attr('attr-id'));
-
-            $(deleteTaskButton).parent().remove();
-
-            if (!$('.task-inputs').children('.task-group').length) {
-                toggleDisableButtons(true, '.show-all', '.show-undone');
-            }
+            deleteTask(ev);
         });
 
-
-    $('.show-all').on('click', ev => {
-        // TODO get all from data base and render list
-        toggleDisableButtons(true, '.show-all');
-        toggleDisableButtons(false, '.show-undone');
-    });
-
-    $('.show-undone').on('click', ev => {
-        // TODO get undone from data base and render list
-        toggleDisableButtons(true, '.show-undone');
-        toggleDisableButtons(false, '.show-all');
-    });
-
-
-    $('.delete-button').on('click', (ev) => {
-        // TODO delete list from data base
-        $('.task-inputs').children('.task-group').remove();
-        toggleDisableButtons(true, '.show-all', '.show-undone', '.delete-button');
-    });
+    $('.show-all').on('click', (showAll));
+    $('.show-undone').on('click', (showUndone));
+    $('.delete-button').on('click', (deleteAll));
 });
-
-
-const saveTaskAction = () => {
-    const taskInput = $('.create-input');
-    const task = taskInput.val();
-
-    // TODO post task in data base
-    // TODO get id and date from server
-
-    if (task.trim()) {
-        const newTask = new Task(3, task, '11/12, 10:30');
-
-        renderTask(newTask);
-        taskInput.val('');
-    } else {
-        // TODO display alert
-        return false;
-    }
-};
-
-const toggleDisableButtons = (state, ...args) => {
-    for (let arg of args) {
-        $(arg).attr('disabled', state);
-    }
-};
