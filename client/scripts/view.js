@@ -27,6 +27,7 @@ const enableButtons = () => {
     }
 };
 
+
 const saveTaskHandler = ev => {
     ev.preventDefault();
 
@@ -34,19 +35,19 @@ const saveTaskHandler = ev => {
         const newTask = saveTaskAction();
         renderTask(newTask);
     } catch (e) {
-       switch(e) {
-           case 'no-task':
-               setAlert('Please insert a valid task name.');
-               break;
+        switch (e) {
+            case 'no-task':
+                setAlert('Please insert a valid task name.');
+                break;
 
-           case 'too-long':
-               setAlert('Please insert a less than 70 characters task.');
-               break;
+            case 'too-long':
+                setAlert('Please insert a less than 70 characters task.');
+                break;
 
-           default:
-               setAlert('Sorry! Some error occurred and the action could not be done.');
-               break;
-       }
+            default:
+                setAlert('Sorry! Some error occurred and the action could not be done.');
+                break;
+        }
     }
 };
 
@@ -66,6 +67,7 @@ const saveTaskAction = () => {
 
     return new Task(Math.floor(Math.random() * 100), task, '11/12, 10:30');
 };
+
 
 const toggleCheckedTask = ev => {
     const checkboxInput = ev.target;
@@ -115,6 +117,7 @@ const deleteTask = ev => {
         disableButtons(true, '.show-all', '.show-undone');
     }
 };
+
 
 const showAll = () => {
     disableButtons(true, '.show-all');
