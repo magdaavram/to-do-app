@@ -97,7 +97,7 @@ const editTask = ev => {
     const toggleDisplayElements = [initialTaskTextElem, initialTaskDateElem, editTaskInput];
 
     if (ev.key === 'Enter') {
-        const newTask = $(editTaskInput).val();
+        const newTask = $(editTaskInput).val().trim();
 
         toggleClass('d-none', toggleDisplayElements);
         $(initialTaskTextElem).text(newTask);
