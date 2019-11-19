@@ -55,18 +55,23 @@ $(document).ready(() => {
             // TODO get new date from server
 
             const editTaskInput = ev.target;
+            const mainContainer = $(editTaskInput).parent();
+            const initialTaskTextElem = $(mainContainer).find('.task');
+            const initialTaskDateElem = $(mainContainer).find('.date-created');
 
             if (ev.key === 'Enter') {
                 const taskText = $(editTaskInput).val();
-                const mainContainer = $(editTaskInput).parent();
-                const taskTextElem = $(mainContainer).find('.task');
-                const taskDateElem = $(mainContainer).find('.date-created');
 
-                $(taskTextElem).removeClass('d-none');
-                $(taskTextElem).text(taskText);
-                $(taskDateElem).removeClass('d-none');
+                $(initialTaskTextElem).removeClass('d-none').text(taskText);
+                $(initialTaskDateElem).removeClass('d-none');
                 $(editTaskInput).addClass('d-none');
                 ev.preventDefault();
+            }
+
+            if (ev.key === 'Escape') {
+                $(initialTaskTextElem).removeClass('d-none');
+                $(initialTaskDateElem).removeClass('d-none');
+                $(editTaskInput).addClass('d-none');
             }
         })
         .on('click', '.delete-task', ev => {
