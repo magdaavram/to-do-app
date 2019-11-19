@@ -64,6 +64,7 @@ const saveTaskAction = () => {
     }
 
     disableButtons(false, '.show-all', '.show-undone', '.delete-button');
+    $('.alert-content').hide();
 
     return new Task(Math.floor(Math.random() * 100), task, '11/12, 10:30');
 };
@@ -154,7 +155,7 @@ const setAlert = alert => {
 };
 
 const hideAlert = ev => {
-    $('.' + $(ev.target).attr('data-hide')).hide();
+    $('.alert-content').hide();
     $('.alert-container').addClass('d-none');
 };
 
