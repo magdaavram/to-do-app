@@ -74,6 +74,17 @@ $(document).ready(() => {
                 $(editTaskInput).addClass('d-none');
             }
         })
+        .on('focusout', '.edit-task', ev => {
+            const editTaskInput = ev.target;
+            const mainContainer = $(editTaskInput).parent();
+            const initialTaskTextElem = $(mainContainer).find('.task');
+            const initialTaskDateElem = $(mainContainer).find('.date-created');
+            const taskText = $(editTaskInput).val();
+
+            $(initialTaskTextElem).removeClass('d-none').text(taskText);
+            $(initialTaskDateElem).removeClass('d-none');
+            $(editTaskInput).addClass('d-none');
+        })
         .on('click', '.delete-task', ev => {
             // TODO delete on data base
             const deleteTaskButton = ev.target;
