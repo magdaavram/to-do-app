@@ -8,13 +8,13 @@ const $ = require('jquery');
 const saveTaskHandler = (e) => {
     e.preventDefault();
 
-    try {
-        const taskInput = $('.create-input');
-        const text = taskInput.val().trim();
-        taskInput.val('');
-        $('.buttons').attr('disabled', false);
-        $('.alert-content').hide();
+    const taskInput = $('.create-input');
+    const text = taskInput.val().trim();
+    taskInput.val('');
+    $('.buttons').attr('disabled', false);
+    $('.alert-content').hide();
 
+    try {
         validateTask(text);
 
         const newTask = saveTask(text);
