@@ -5,6 +5,10 @@ import '@fortawesome/fontawesome-free/js/solid';
 import 'bootstrap';
 import * as actions from './view';
 import {saveTaskHandler, editTaskHandler} from './handlers';
+import {saveTaskAction} from "./view";
+import {renderTask} from "./view";
+import {handleErrors} from "./view";
+import {Task} from "./task";
 
 const $ = require('jquery');
 
@@ -18,8 +22,11 @@ const deleteAll = actions.deleteAll;
 const hideAlert = actions.hideAlert;
 
 $(window).on('load', enableButtons);
+
+import {validateTask, saveTask} from "./task";
+
 $(document).ready(() => {
-    $('.create-task').on('submit', ev => saveTaskHandler(ev));
+    $('.create-task').on('submit', saveTaskHandler);
     $('.task-inputs')
         .on('click', 'input[type="checkbox"]', ev => toggleCheckedTask(ev))
         .on('click', '.edit-btn', ev => showTaskEdit(ev))

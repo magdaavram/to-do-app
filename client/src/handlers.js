@@ -1,17 +1,27 @@
 'use strict';
 
 import {saveTaskAction, renderTask, handleErrors, editTask, toggleClass} from './view';
+import {save as saveTask, validate as validateTask} from "./task";
 
 const $ = require('jquery');
 
-const saveTaskHandler = ev => {
-    ev.preventDefault();
+const saveTaskHandler = (e) => {
+    e.preventDefault();
 
     try {
-        const newTask = saveTaskAction();
+        const taskInput = $('.create-input');
+        const text = taskInput.val().trim();
+        taskInput.val('');
+        $('.buttons').attr('disabled', false);
+        $('.alert-content').hide();
+
+        validateTask(text);
+
+        const newTask = saveTask(text);
+
         renderTask(newTask);
     } catch (e) {
-        handleErrors(e);
+        handleErrors(e)
     }
 };
 
