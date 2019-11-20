@@ -5,14 +5,13 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '../styles/index.scss';
 import 'bootstrap';
 import * as actions from './view';
+import {saveTaskHandler, editTaskHandler} from './handlers';
 
 const $ = require('jquery');
 
 const enableButtons = actions.enableButtons;
-const saveTaskHandler = actions.saveTaskHandler;
 const toggleCheckedTask = actions.toggleCheckedTask;
 const showTaskEdit = actions.showTaskEdit;
-const editTaskHandler = actions.editTaskHandler;
 const deleteTask = actions.deleteTask;
 const showAll = actions.showAll;
 const showUndone = actions.showUndone;

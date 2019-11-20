@@ -11,17 +11,6 @@ const enableButtons = () => {
     }
 };
 
-const saveTaskHandler = ev => {
-    ev.preventDefault();
-
-    try {
-        const newTask = saveTaskAction();
-        renderTask(newTask);
-    } catch (e) {
-        handleErrors(e);
-    }
-};
-
 const toggleCheckedTask = ev => {
     const checkboxInput = ev.target;
     $(checkboxInput).parent().find('.task').toggleClass('checked');
@@ -40,26 +29,6 @@ const showTaskEdit = ev => {
     $(editTaskInput).val(taskText).focus().select();
 };
 
-const editTaskHandler = ev => {
-    const editTaskInput = ev.target;
-    const mainContainer = $(editTaskInput).parent();
-    const initialTaskTextElem = $(mainContainer).find('.task');
-    const initialTaskDateElem = $(mainContainer).find('.date-created');
-    const toggleDisplayElements = [initialTaskTextElem, initialTaskDateElem, editTaskInput];
-
-    if (ev.key === 'Enter') {
-        try {
-            editTask(ev, initialTaskTextElem);
-            toggleClass('d-none', toggleDisplayElements);
-        } catch (e) {
-            handleErrors(e);
-        }
-    }
-
-    if (ev.key === 'Escape') {
-        toggleClass('d-none', toggleDisplayElements);
-    }
-};
 
 const deleteTask = ev => {
     const deleteTaskButton = ev.target;
@@ -171,12 +140,14 @@ const disableButtons = (state, ...buttons) => {
 
 
 export {
+    saveTaskAction,
+    renderTask,
+    handleErrors,
+    editTask,
+    toggleClass,
     enableButtons,
-    saveTaskHandler,
     toggleCheckedTask,
     showTaskEdit,
-    editTask,
-    editTaskHandler,
     deleteTask,
     showAll,
     showUndone,
