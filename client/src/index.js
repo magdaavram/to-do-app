@@ -2,7 +2,6 @@
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
-import '../styles/index.scss';
 import 'bootstrap';
 import * as actions from './view';
 import {saveTaskHandler, editTaskHandler} from './handlers';
