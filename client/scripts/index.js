@@ -12,7 +12,7 @@ const enableButtons = actions.enableButtons;
 const saveTaskHandler = actions.saveTaskHandler;
 const toggleCheckedTask = actions.toggleCheckedTask;
 const showTaskEdit = actions.showTaskEdit;
-const editTask = actions.editTask;
+const editTaskHandler = actions.editTaskHandler;
 const deleteTask = actions.deleteTask;
 const showAll = actions.showAll;
 const showUndone = actions.showUndone;
@@ -25,7 +25,7 @@ $(document).ready(() => {
     $('.task-inputs')
         .on('click', 'input[type="checkbox"]', ev => toggleCheckedTask(ev))
         .on('click', '.edit-btn', ev => showTaskEdit(ev))
-        .on('keydown', '.edit-task', ev => editTask(ev))
+        .on('keydown', '.edit-task', ev => editTaskHandler(ev))
         .on('click', '.delete-task', ev => deleteTask(ev));
     $('.show-all').on('click', showAll);
     $('.show-undone').on('click', showUndone);

@@ -35,19 +35,7 @@ const saveTaskHandler = ev => {
         const newTask = saveTaskAction();
         renderTask(newTask);
     } catch (e) {
-        switch (e) {
-            case 'no-task':
-                setAlert('Please insert a valid task name.');
-                break;
-
-            case 'too-long':
-                setAlert('Please insert a less than 70 characters task.');
-                break;
-
-            default:
-                setAlert('Sorry! Some error occurred and the action could not be done.');
-                break;
-        }
+        handleErrors(e);
     }
 };
 
@@ -56,13 +44,7 @@ const saveTaskAction = () => {
     const task = taskInput.val().trim();
 
     taskInput.val('');
-
-    if (task === '') {
-        throw 'no-task';
-    } else if (task.length > 70) {
-        throw 'too-long';
-    }
-
+    checkTask(task);
     disableButtons(false, '.show-all', '.show-undone', '.delete-button');
     $('.alert-content').hide();
 
@@ -89,7 +71,8 @@ const showTaskEdit = ev => {
     $(taskDateElem).addClass('d-none');
 };
 
-const editTask = ev => {
+
+const editTaskHandler = ev => {
     const editTaskInput = ev.target;
     const mainContainer = $(editTaskInput).parent();
     const initialTaskTextElem = $(mainContainer).find('.task');
@@ -97,17 +80,51 @@ const editTask = ev => {
     const toggleDisplayElements = [initialTaskTextElem, initialTaskDateElem, editTaskInput];
 
     if (ev.key === 'Enter') {
-        const newTask = $(editTaskInput).val().trim();
-
-        toggleClass('d-none', toggleDisplayElements);
-        $(initialTaskTextElem).text(newTask);
-        ev.preventDefault();
+        try {
+            editTask(ev, initialTaskTextElem);
+            toggleClass('d-none', toggleDisplayElements);
+        } catch (e) {
+            handleErrors(e);
+        }
     }
 
     if (ev.key === 'Escape') {
         toggleClass('d-none', toggleDisplayElements);
     }
 };
+
+const editTask = (ev, initialTaskTextElem) => {
+    const task = $(ev.target).val().trim();
+
+    ev.preventDefault();
+    checkTask(task);
+    $(initialTaskTextElem).text(task);
+};
+
+const checkTask = task => {
+    if (task === '') {
+        throw 'no-task';
+    } else if (task.length > 70) {
+        throw 'too-long';
+    }
+};
+
+const handleErrors = e => {
+    switch (e) {
+        case 'no-task':
+            setAlert('Please insert a valid task name.');
+            break;
+
+        case 'too-long':
+            setAlert('Please insert a less than 70 characters task.');
+            break;
+
+        default:
+            setAlert('Sorry! Some error occurred and the action could not be done.');
+            break;
+    }
+};
+
 
 const deleteTask = ev => {
     const deleteTaskButton = ev.target;
@@ -166,6 +183,7 @@ export {
     toggleCheckedTask,
     showTaskEdit,
     editTask,
+    editTaskHandler,
     deleteTask,
     showAll,
     showUndone,
