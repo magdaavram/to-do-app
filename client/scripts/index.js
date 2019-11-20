@@ -30,5 +30,5 @@ $(document).ready(() => {
     $('.show-all').on('click', showAll);
     $('.show-undone').on('click', showUndone);
     $('.delete-button').on('click', deleteAll);
-    $('.close-alert').on('click', ev => hideAlert(ev));
+    $('.close-alert').on('click', hideAlert);
 });
