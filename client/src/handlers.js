@@ -1,6 +1,6 @@
 'use strict';
 
-import {renderTask, handleErrors, editTask, toggleClass} from './view';
+import {renderTask, handleErrors, toggleClass} from './view';
 import {save as saveTask, validate as validateTask} from "./task";
 
 const $ = require('jquery');
@@ -32,10 +32,18 @@ const editTaskHandler = ev => {
     const initialTaskDateElem = $(mainContainer).find('.date-created');
     const toggleDisplayElements = [initialTaskTextElem, initialTaskDateElem, editTaskInput];
 
+
     if (ev.key === 'Enter') {
+        ev.preventDefault();
+
+        const text = $(ev.target).val().trim();
+
+        toggleClass('d-none', toggleDisplayElements);
+
         try {
-            editTask(ev, initialTaskTextElem);
-            toggleClass('d-none', toggleDisplayElements);
+            validateTask(text);
+
+            $(initialTaskTextElem).text(text);
         } catch (e) {
             handleErrors(e);
         }

@@ -1,7 +1,5 @@
 'use strict';
 
-import {validate as validateTask} from './task';
-
 const $ = require('jquery');
 const Mustache = require('mustache');
 
@@ -16,8 +14,7 @@ const toggleCheckedTask = ev => {
 };
 
 const showTaskEdit = ev => {
-    const editTaskButton = ev.target;
-    const mainContainer = $(editTaskButton).parent();
+    const mainContainer = $(ev.target).parent();
     const editTaskInput = $(mainContainer).find('.edit-task');
     const taskTextElem = $(mainContainer).find('.task');
     const taskText = $(taskTextElem).text();
@@ -72,15 +69,6 @@ const renderTasks = tasks => {
 };
 
 
-const editTask = (ev, initialTaskTextElem) => {
-    const task = $(ev.target).val().trim();
-
-    ev.preventDefault();
-    validateTask(task);
-    $(initialTaskTextElem).text(task);
-};
-
-
 const handleErrors = e => {
     switch (e) {
         case 'no-task':
@@ -112,7 +100,6 @@ const toggleClass = (className, items) => {
 export {
     renderTask,
     handleErrors,
-    editTask,
     toggleClass,
     enableButtons,
     toggleCheckedTask,
