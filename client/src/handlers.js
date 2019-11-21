@@ -11,15 +11,15 @@ const saveTaskHandler = ev => {
     const taskInput = $('.create-input');
     const text = taskInput.val().trim();
     taskInput.val('');
-    $('.btn-change-display').attr('disabled', false);
     $('.alert-content').hide();
 
     try {
         validateTask(text);
 
         const newTask = saveTask(text);
-
         renderTask(newTask);
+
+        $('.btn-change-display').attr('disabled', false);
     } catch (e) {
         handleErrors(e);
     }
