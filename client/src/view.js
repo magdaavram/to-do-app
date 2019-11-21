@@ -1,17 +1,18 @@
 'use strict';
 
+import {validate as validateTask} from './task';
+
 const $ = require('jquery');
 const Mustache = require('mustache');
 
 const enableButtons = () => {
     if ($('.task-inputs').children('.task-group').length) {
-        disableButtons(false, '.show-all', '.show-undone', '.delete-button');
+        $('.btn-change-display').attr('disabled', false);
     }
 };
 
 const toggleCheckedTask = ev => {
-    const checkboxInput = ev.target;
-    $(checkboxInput).parent().find('.task').toggleClass('checked');
+    $(ev.target).parent().find('.task').toggleClass('checked');
 };
 
 const showTaskEdit = ev => {
@@ -29,28 +30,26 @@ const showTaskEdit = ev => {
 
 
 const deleteTask = ev => {
-    const deleteTaskButton = ev.target;
-
-    $(deleteTaskButton).parent().remove();
+    $(ev.target).parent().remove();
 
     if (!$('.task-inputs').children('.task-group').length) {
-        disableButtons(true, '.show-all', '.show-undone', '.delete-button');
+        $('.btn-change-display').attr('disabled', true);
     }
 };
 
 const showAll = () => {
-    disableButtons(true, '.show-all');
-    disableButtons(false, '.show-undone');
+    $('.show-all').attr('disabled', true);
+    $('.show-undone').attr('disabled', false);
 };
 
 const showUndone = () => {
-    disableButtons(true, '.show-undone');
-    disableButtons(false, '.show-all');
+    $('.show-undone').attr('disabled', true);
+    $('.show-all').attr('disabled', false);
 };
 
 const deleteAll = () => {
     $('.task-inputs').children('.task-group').remove();
-    disableButtons(true, '.show-all', '.show-undone', '.delete-button');
+    $('.btn-change-display').attr('disabled', true);
 };
 
 const hideAlert = () => {
@@ -77,16 +76,8 @@ const editTask = (ev, initialTaskTextElem) => {
     const task = $(ev.target).val().trim();
 
     ev.preventDefault();
-    checkTask(task);
+    validateTask(task);
     $(initialTaskTextElem).text(task);
-};
-
-const checkTask = task => {
-    if (task === '') {
-        throw 'no-task';
-    } else if (task.length > 70) {
-        throw 'too-long';
-    }
 };
 
 
@@ -114,12 +105,6 @@ const setAlert = alert => {
 const toggleClass = (className, items) => {
     for (let item of items) {
         $(item).toggleClass(className);
-    }
-};
-
-const disableButtons = (state, ...buttons) => {
-    for (let button of buttons) {
-        $(button).attr('disabled', state);
     }
 };
 
