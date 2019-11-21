@@ -3,12 +3,6 @@
 const $ = require('jquery');
 const Mustache = require('mustache');
 
-const enableButtons = () => {
-    if ($('.task-inputs').children('.task-group').length) {
-        $('.btn-change-display').attr('disabled', false);
-    }
-};
-
 const toggleCheckedTask = ev => {
     $(ev.target).parent().find('.task').toggleClass('checked');
 };
@@ -19,10 +13,10 @@ const showTaskEdit = ev => {
     const taskTextElem = $(mainContainer).find('.task');
     const taskText = $(taskTextElem).text();
     const taskDateElem = $(mainContainer).find('.date-created');
-    const toggleDisplayElements = [editTaskInput, taskTextElem, taskDateElem];
 
-    toggleClass('d-none', toggleDisplayElements);
-    $(editTaskInput).val(taskText).focus().select();
+    $(taskTextElem).toggleClass('d-none');
+    $(taskDateElem).toggleClass('d-none');
+    $(editTaskInput).toggleClass('d-none').val(taskText).focus().select();
 };
 
 
@@ -90,18 +84,10 @@ const setAlert = alert => {
     $('.alert-text').text(alert);
 };
 
-const toggleClass = (className, items) => {
-    for (let item of items) {
-        $(item).toggleClass(className);
-    }
-};
-
 
 export {
     renderTask,
     handleErrors,
-    toggleClass,
-    enableButtons,
     toggleCheckedTask,
     showTaskEdit,
     deleteTask,

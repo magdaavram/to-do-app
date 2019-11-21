@@ -1,6 +1,6 @@
 'use strict';
 
-import {renderTask, handleErrors, toggleClass} from './view';
+import {renderTask, handleErrors} from './view';
 import {save as saveTask, validate as validateTask} from "./task";
 
 const $ = require('jquery');
@@ -30,7 +30,6 @@ const editTaskHandler = ev => {
     const mainContainer = $(editTaskInput).parent();
     const initialTaskTextElem = $(mainContainer).find('.task');
     const initialTaskDateElem = $(mainContainer).find('.date-created');
-    const toggleDisplayElements = [initialTaskTextElem, initialTaskDateElem, editTaskInput];
 
 
     if (ev.key === 'Enter') {
@@ -38,7 +37,9 @@ const editTaskHandler = ev => {
 
         const text = $(ev.target).val().trim();
 
-        toggleClass('d-none', toggleDisplayElements);
+        $(initialTaskTextElem).toggleClass('d-none');
+        $(initialTaskDateElem).toggleClass('d-none');
+        $(editTaskInput).toggleClass('d-none');
 
         try {
             validateTask(text);
@@ -50,7 +51,9 @@ const editTaskHandler = ev => {
     }
 
     if (ev.key === 'Escape') {
-        toggleClass('d-none', toggleDisplayElements);
+        $(initialTaskTextElem).toggleClass('d-none');
+        $(initialTaskDateElem).toggleClass('d-none');
+        $(editTaskInput).toggleClass('d-none');
     }
 };
 
