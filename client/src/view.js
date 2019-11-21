@@ -1,7 +1,5 @@
 'use strict';
 
-import {Task} from "./task";
-
 const $ = require('jquery');
 const Mustache = require('mustache');
 
@@ -58,19 +56,6 @@ const deleteAll = () => {
 const hideAlert = () => {
     $('.alert-content').hide();
     $('.alert-container').addClass('d-none');
-};
-
-
-const saveTaskAction = () => {
-    const taskInput = $('.create-input');
-    const task = taskInput.val().trim();
-
-    taskInput.val('');
-    checkTask(task);
-    disableButtons(false, '.show-all', '.show-undone', '.delete-button');
-    $('.alert-content').hide();
-
-    return new Task(Math.floor(Math.random() * 100), task, '11/12, 10:30');
 };
 
 
@@ -140,7 +125,6 @@ const disableButtons = (state, ...buttons) => {
 
 
 export {
-    saveTaskAction,
     renderTask,
     handleErrors,
     editTask,

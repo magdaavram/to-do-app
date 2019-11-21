@@ -5,10 +5,6 @@ import '@fortawesome/fontawesome-free/js/solid';
 import 'bootstrap';
 import * as actions from './view';
 import {saveTaskHandler, editTaskHandler} from './handlers';
-import {saveTaskAction} from "./view";
-import {renderTask} from "./view";
-import {handleErrors} from "./view";
-import {Task} from "./task";
 
 const $ = require('jquery');
 
@@ -22,16 +18,13 @@ const deleteAll = actions.deleteAll;
 const hideAlert = actions.hideAlert;
 
 $(window).on('load', enableButtons);
-
-import {validateTask, saveTask} from "./task";
-
 $(document).ready(() => {
     $('.create-task').on('submit', saveTaskHandler);
     $('.task-inputs')
-        .on('click', 'input[type="checkbox"]', ev => toggleCheckedTask(ev))
-        .on('click', '.edit-btn', ev => showTaskEdit(ev))
-        .on('keydown', '.edit-task', ev => editTaskHandler(ev))
-        .on('click', '.delete-task', ev => deleteTask(ev));
+        .on('click', 'input[type="checkbox"]', toggleCheckedTask)
+        .on('click', '.edit-btn', showTaskEdit)
+        .on('keydown', '.edit-task', editTaskHandler)
+        .on('click', '.delete-task', deleteTask);
     $('.show-all').on('click', showAll);
     $('.show-undone').on('click', showUndone);
     $('.delete-button').on('click', deleteAll);

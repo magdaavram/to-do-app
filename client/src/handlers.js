@@ -1,12 +1,12 @@
 'use strict';
 
-import {saveTaskAction, renderTask, handleErrors, editTask, toggleClass} from './view';
+import {renderTask, handleErrors, editTask, toggleClass} from './view';
 import {save as saveTask, validate as validateTask} from "./task";
 
 const $ = require('jquery');
 
-const saveTaskHandler = (e) => {
-    e.preventDefault();
+const saveTaskHandler = ev => {
+    ev.preventDefault();
 
     const taskInput = $('.create-input');
     const text = taskInput.val().trim();
