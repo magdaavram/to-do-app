@@ -25,6 +25,25 @@ const saveTaskHandler = ev => {
     }
 };
 
+
+const toggleCheckedTaskHandler = ev => {
+    $(ev.target).parent().find('.task').toggleClass('checked');
+};
+
+
+const showTaskEditHandler = ev => {
+    const mainContainer = $(ev.target).parent();
+    const editTaskInput = $(mainContainer).find('.edit-task');
+    const taskTextElem = $(mainContainer).find('.task');
+    const taskText = $(taskTextElem).text();
+    const taskDateElem = $(mainContainer).find('.date-created');
+
+    $(taskTextElem).toggleClass('d-none');
+    $(taskDateElem).toggleClass('d-none');
+    $(editTaskInput).toggleClass('d-none').val(taskText).focus().select();
+};
+
+
 const editTaskHandler = ev => {
     const editTaskInput = ev.target;
     const mainContainer = $(editTaskInput).parent();
@@ -57,4 +76,45 @@ const editTaskHandler = ev => {
     }
 };
 
-export {saveTaskHandler, editTaskHandler};
+
+const deleteTaskHandler = ev => {
+    $(ev.target).parent().remove();
+
+    if (!$('.task-inputs').children('.task-group').length) {
+        $('.btn-change-display').attr('disabled', true);
+    }
+};
+
+
+const showAllHandler = () => {
+    $('.show-all').attr('disabled', true);
+    $('.show-undone').attr('disabled', false);
+};
+
+const showUndoneHandler = () => {
+    $('.show-undone').attr('disabled', true);
+    $('.show-all').attr('disabled', false);
+};
+
+const deleteAllHandler = () => {
+    $('.task-inputs').children('.task-group').remove();
+    $('.btn-change-display').attr('disabled', true);
+};
+
+const hideAlertHandler = () => {
+    $('.alert-content').hide();
+    $('.alert-container').addClass('d-none');
+};
+
+
+export {
+    saveTaskHandler,
+    toggleCheckedTaskHandler,
+    showTaskEditHandler,
+    editTaskHandler,
+    deleteTaskHandler,
+    showAllHandler,
+    showUndoneHandler,
+    deleteAllHandler,
+    hideAlertHandler
+};
