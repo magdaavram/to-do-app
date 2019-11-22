@@ -1,10 +1,10 @@
 'use strict';
 
 class Task {
-    constructor(id, task, date) {
-        this.taskId = id;
-        this.task = task;
-        this.date = date;
+    constructor(id, text, date) {
+        this.id = id;
+        this.text = text;
+        this.created_at = date;
         this.done = false;
     }
 }

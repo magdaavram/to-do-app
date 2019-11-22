@@ -36,22 +36,22 @@
         <form class="task-inputs">
             <script class="d-none" id="task-template" type="text/template">
                 <div class="custom-control custom-checkbox mr-sm-2 task-group d-flex justify-content-between">
-                    <input class="custom-control-input" id="task-{{taskId}}" attr-id="{{taskId}}" type="checkbox">
+                    <input class="custom-control-input" id="task-{{id}}" attr-id="{{id}}" type="checkbox">
 
-                    <label class="custom-control-label task-container" for="task-{{taskId}}">
+                    <label class="custom-control-label task-container" for="task-{{id}}">
                         <div class="d-flex align-items-center">
-                            <span class="task">{{task}}</span>
-                            <span class="date-created text-center">({{date}})</span>
+                            <span class="task">{{text}}</span>
+                            <span class="date-created text-center">({{created_at}})</span>
                         </div>
 
-                        <input class="form-control edit-task d-none" attr-id="{{taskId}}" type="text">
+                        <input class="form-control edit-task d-none" attr-id="{{id}}" type="text">
                     </label>
 
-                    <button attr-id="{{taskId}}" class="btn btn-primary btn-sm edit-btn" type="button">
+                    <button attr-id="{{id}}" class="btn btn-primary btn-sm edit-btn" type="button">
                         <i aria-hidden="true" class="fa fa-edit"></i>
                     </button>
 
-                    <button attr-id="{{taskId}}" class="btn btn-danger btn-sm delete-task" type="button">
+                    <button attr-id="{{id}}" class="btn btn-danger btn-sm delete-task" type="button">
                         X
                     </button>
                 </div>
