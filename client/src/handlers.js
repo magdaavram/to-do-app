@@ -1,7 +1,7 @@
 'use strict';
 
-import {renderTask, handleErrors} from './view';
-import {save as saveTask, validate as validateTask} from "./task";
+import {renderTask, handleErrors, createRequest} from './view';
+import {Task, validate as validateTask} from "./task";
 
 const $ = require('jquery');
 
@@ -16,10 +16,21 @@ const saveTaskHandler = ev => {
     try {
         validateTask(text);
 
-        const newTask = saveTask(text);
-        renderTask(newTask);
+        const taskText = {
+            text: text
+        };
 
-        $('.btn-change-display').attr('disabled', false);
+        createRequest(
+            'http://private-636259-todoapp21.apiary-mock.com/tasks',
+            'POST',
+            `${taskText}`,
+            (task) => {
+                const newTask = new Task(task.id, task.text, task.created_at, task.done);
+
+                renderTask(newTask);
+
+                $('.btn-change-display').attr('disabled', false);
+            });
     } catch (e) {
         handleErrors(e);
     }

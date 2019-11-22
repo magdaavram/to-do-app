@@ -1,11 +1,11 @@
 'use strict';
 
 class Task {
-    constructor(id, text, date) {
+    constructor(id, text, date, done) {
         this.id = id;
         this.text = text;
         this.created_at = date;
-        this.done = false;
+        this.done = done;
     }
 }
 
@@ -19,8 +19,4 @@ const validate = text => {
     }
 };
 
-const save = text => {
-    return new Task(Math.floor(Math.random() * 100), text, '11/12, 10:30');
-};
-
-export {Task, validate, save};
+export {Task, validate};

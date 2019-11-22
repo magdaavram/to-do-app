@@ -31,4 +31,19 @@ const setAlert = alert => {
 };
 
 
-export {renderTask, handleErrors};
+const createRequest = (url, method, body, callback) => {
+    fetch(url, {
+        method: method,
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .then(json => {
+            callback(json);
+        });
+};
+
+
+export {renderTask, handleErrors, createRequest};
